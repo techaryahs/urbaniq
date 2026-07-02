@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,24 +9,32 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import type { ChartData } from "chart.js";
 import { Line } from "react-chartjs-2";
+import { getAnalyticsMonthly } from "../../services/analyticsApi";
+import type { MonthlySurvey } from "../../services/analyticsApi";
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const SurveyLineChart = () => {
-  const data = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-    datasets: [
-      {
-        label: "Surveys Submitted",
-        data: [12, 19, 15, 22, 28, 25, 30],
-        borderColor: "rgba(34, 197, 94, 1)", // Green 500
-        backgroundColor: "rgba(34, 197, 94, 0.2)",
-        tension: 0.4,
-        fill: true,
-      },
-    ],
-  };
+  const [data, setData] = useState<ChartData<"line"> | null>(null);
+
+  useEffect(() => {
+    getAnalyticsMonthly().then((monthly: MonthlySurvey[]) => {
+      setData({
+        labels: monthly.map((m) => m.month),
+        datasets: [
+          {
+            label: "Surveys Collected",
+            data: monthly.map((m) => m.surveys),
+            borderColor: "#8b5cf6",
+            backgroundColor: "rgba(139, 92, 246, 0.5)",
+            tension: 0.3,
+          },
+        ],
+      });
+    });
+  }, []);
 
   const options = {
     responsive: true,
@@ -44,7 +53,7 @@ const SurveyLineChart = () => {
 
   return (
     <div className="h-48">
-      <Line data={data} options={options} />
+      {!data ? <div className="text-sm text-gray-500">Loading chart...</div> : <Line data={data} options={options} />}
     </div>
   );
 };

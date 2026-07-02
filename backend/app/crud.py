@@ -28,6 +28,9 @@ def park_to_dict(park: Park):
         "area": park.area,
         "latitude": latitude,
         "longitude": longitude,
+        "condition": park.condition,
+        "organization": park.organization,
+        "survey_score": park.survey_score,
     }
 
 
@@ -93,7 +96,10 @@ def get_parks_geojson(db: Session):
                 "properties": {
                     "id": park_data["id"],
                     "name": park_data["name"],
-                    "area": park_data["area"]
+                    "area": park_data["area"],
+                    "condition": park_data["condition"],
+                    "organization": park_data["organization"],
+                    "survey_score": park_data["survey_score"]
                 }
             }
         )

@@ -44,6 +44,7 @@ interface Props {
   onLayerToggle: (layer: LayerKey) => void;
   selectedBasemap: BasemapKey;
   onBasemapChange: (key: BasemapKey) => void;
+  readOnly?: boolean;
 }
 
 interface ClickHandlerProps {
@@ -59,6 +60,20 @@ const MapClickHandler = ({ onMapClick }: ClickHandlerProps) => {
     },
   });
 
+  return null;
+};
+
+const MapBoundsFitter = ({ parks, readOnly }: { parks: Park[]; readOnly: boolean }) => {
+  const map = useMapEvents({});
+  useEffect(() => {
+    if (readOnly && parks.length > 0) {
+      const bounds = L.latLngBounds(parks.map(p => [p.latitude, p.longitude]));
+      if (bounds.isValid()) {
+        map.fitBounds(bounds, { padding: [20, 20] });
+      }
+    }
+  }, [parks, readOnly, map]);
+  
   return null;
 };
 
@@ -81,6 +96,7 @@ const MapView = ({
   onLayerToggle,
   selectedBasemap,
   onBasemapChange,
+  readOnly = false,
 }: Props) => {
   const [showModal, setShowModal] = useState(false);
 
@@ -181,24 +197,22 @@ const MapView = ({
             url={BASEMAPS[selectedBasemap].url}
           />
 
-          <LayerControl 
-            activeLayers={activeLayers} 
-            onLayerToggle={onLayerToggle} 
-            selectedBasemap={selectedBasemap} 
-            onBasemapChange={onBasemapChange} 
-          />
+          <MapBoundsFitter parks={parks} readOnly={readOnly} />
 
-          {/* Heatmap Layer */}
-          <HeatmapLayer parks={parks} enabled={activeLayers.includes("heatmap")} />
-
-          {/* Geoman Toolbar */}
-          <GeomanControl position="topleft" oneBlock />
-
-          {/* Geoman Events */}
-          <Events setFeatures={setFeatures} />
-
-          {/* Click Map */}
-          <MapClickHandler onMapClick={handleMapClick} />
+          {!readOnly && (
+            <>
+              <LayerControl 
+                activeLayers={activeLayers} 
+                onLayerToggle={onLayerToggle} 
+                selectedBasemap={selectedBasemap} 
+                onBasemapChange={onBasemapChange} 
+              />
+              <HeatmapLayer parks={parks} enabled={activeLayers.includes("heatmap")} />
+              <GeomanControl position="topleft" oneBlock />
+              <Events setFeatures={setFeatures} />
+              <MapClickHandler onMapClick={handleMapClick} />
+            </>
+          )}
 
           {/* Measure Line */}
           {activeLayers.includes("measurements") && measurePoints.length > 0 && (
@@ -242,7 +256,7 @@ const MapView = ({
         </MapContainer>
 
         {/* GIS Feature Panel (Relocated to floating widget) */}
-        {features.length > 0 && (
+        {!readOnly && features.length > 0 && (
           <div className="absolute bottom-4 left-4 z-[1000] bg-white/95 backdrop-blur rounded-xl shadow-lg border border-gray-200 p-4 max-w-sm max-h-64 overflow-y-auto">
             <div className="flex items-center justify-between mb-3">
               <h3 className="font-bold text-gray-800 text-sm">Drawn Features ({features.length})</h3>

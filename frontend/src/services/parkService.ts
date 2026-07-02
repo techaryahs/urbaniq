@@ -1,5 +1,14 @@
 import api from "./api";
-import type { Park } from "../pages/Dashboard/Dashboard";
+
+export interface Park {
+  id: number;
+  name: string;
+  latitude: number;
+  longitude: number;
+  condition: string;
+  organization: string;
+  survey_score: number;
+}
 
 interface GeoJSONFeature {
   type: "Feature";
@@ -10,7 +19,10 @@ interface GeoJSONFeature {
   properties: {
     id: number;
     name: string;
-    area: number;
+    area: number | null;
+    condition: string;
+    organization: string;
+    survey_score: number;
   };
 }
 
@@ -47,7 +59,9 @@ export const getParks = async (): Promise<Park[]> => {
     name: feature.properties.name,
     latitude: feature.geometry.coordinates[1],
     longitude: feature.geometry.coordinates[0],
-    condition: "Good",
+    condition: feature.properties.condition,
+    organization: feature.properties.organization,
+    survey_score: feature.properties.survey_score,
   }));
 };
 
@@ -57,9 +71,12 @@ export const getParks = async (): Promise<Park[]> => {
 export const createPark = async (park: Omit<Park, "id">): Promise<void> => {
   await api.post("/parks", {
     name: park.name,
-    area: 5000,
+    area: park.area ?? 5000,
     latitude: park.latitude,
     longitude: park.longitude,
+    condition: park.condition,
+    organization: park.organization,
+    survey_score: park.survey_score,
   });
 };
 

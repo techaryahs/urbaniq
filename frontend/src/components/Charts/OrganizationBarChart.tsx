@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -7,21 +8,31 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import type { ChartData } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import { getAnalyticsOrganizations } from "../../services/analyticsApi";
+import type { OrganizationStat } from "../../services/analyticsApi";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const OrganizationBarChart = () => {
-  const data = {
-    labels: ["Parks Dept", "Trust for Public Land", "Local Community", "City Council"],
-    datasets: [
-      {
-        label: "Number of Parks",
-        data: [42, 18, 12, 5],
-        backgroundColor: "rgba(59, 130, 246, 0.8)", // Blue 500
-      },
-    ],
-  };
+  const [data, setData] = useState<ChartData<"bar"> | null>(null);
+
+  useEffect(() => {
+    getAnalyticsOrganizations().then((orgs: OrganizationStat[]) => {
+      setData({
+        labels: orgs.map((o) => o.organization),
+        datasets: [
+          {
+            label: "Parks Managed",
+            data: orgs.map((o) => o.count),
+            backgroundColor: "#3b82f6",
+            borderRadius: 4,
+          },
+        ],
+      });
+    });
+  }, []);
 
   const options = {
     responsive: true,
@@ -40,7 +51,7 @@ const OrganizationBarChart = () => {
 
   return (
     <div className="h-48">
-      <Bar data={data} options={options} />
+      { !data ? <div className="text-sm text-gray-500">Loading chart...</div> : <Bar data={data} options={options} /> }
     </div>
   );
 };

@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
-import StatCard from "../../components/Card/StatCard";
-import MapView from "../../components/Map/MapView";
-import SearchBar from "../../components/Search/SearchBar";
-import FilterBar from "../../components/Filter/FilterBar";
-import GISToolbar from "../../components/Map/GISToolbar";
-import AnalyticsSidebar from "../../components/Analytics/AnalyticsSidebar";
-import type { BufferGeoJSON } from "../../services/parkService";
-import { getParks } from "../../services/parkService";
-import type { BasemapKey } from "../../utils/mapLayers";
-import type { LayerKey } from "../../components/Map/LayerControl";
-import { getAverageCoordinates, getAverageDistanceBetweenParks, getBufferCoveragePercentage } from "../../utils/spatialAnalytics";
-import { getParkConditionStats } from "../../utils/statistics";
+import MapView from "../components/Map/MapView";
+import SearchBar from "../components/Search/SearchBar";
+import FilterBar from "../components/Filter/FilterBar";
+import GISToolbar from "../components/Map/GISToolbar";
+import AnalyticsSidebar from "../components/Analytics/AnalyticsSidebar";
+import type { BufferGeoJSON } from "../services/parkService";
+import { getParks } from "../services/parkService";
+import type { BasemapKey } from "../utils/mapLayers";
+import type { LayerKey } from "../components/Map/LayerControl";
+import { getAverageCoordinates, getAverageDistanceBetweenParks, getBufferCoveragePercentage } from "../utils/spatialAnalytics";
+import { getParkConditionStats } from "../utils/statistics";
 
 export interface Park {
   id: number;
@@ -20,7 +19,7 @@ export interface Park {
   condition: string;
 }
 
-const Dashboard = () => {
+const MapPage = () => {
   const [parks, setParks] = useState<Park[]>([]);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedPark, setSelectedPark] = useState<Park | null>(null);
@@ -109,23 +108,15 @@ const Dashboard = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-8">
-      <div className="flex justify-between items-end mb-2">
+      <div className="flex justify-between items-end mb-6">
         <div>
-          <h1 className="text-4xl font-bold">GIS Analytics Dashboard</h1>
-          <p className="text-gray-500 mt-2">Public Space Stewardship Intelligence Platform</p>
+          <h1 className="text-4xl font-bold">GIS Workspace</h1>
+          <p className="text-gray-500 mt-2">Professional mapping and spatial analysis</p>
         </div>
       </div>
 
-      {/* Top: Statistics Cards */}
-      <div className="grid grid-cols-4 gap-6 mt-6">
-        <StatCard title="Total Parks" value={stats.total} />
-        <StatCard title="Good Condition" value={stats.good} />
-        <StatCard title="Fair Condition" value={stats.fair} />
-        <StatCard title="Poor Condition" value={stats.poor} />
-      </div>
-
-      {/* Middle: Search & Filter */}
-      <div className="grid grid-cols-4 gap-4 mt-8 mb-6">
+      {/* Search & Filter */}
+      <div className="grid grid-cols-4 gap-4 mb-6">
         <div className="col-span-3">
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </div>
@@ -175,4 +166,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default MapPage;

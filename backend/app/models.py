@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Float, DateTime
+from sqlalchemy.sql import func
 from geoalchemy2 import Geometry
 
 from app.database import Base
@@ -15,3 +16,34 @@ class Park(Base):
     location = Column(
         Geometry("POINT", srid=4326)
     )
+
+    condition = Column(String, default="Good")
+    organization = Column(String, default="Parks Dept")
+    survey_score = Column(Float, default=85.0)
+
+
+class Activity(Base):
+    __tablename__ = "activities"
+
+    id = Column(Integer, primary_key=True, index=True)
+    action = Column(String, nullable=False)
+    details = Column(String, nullable=False)
+    timestamp = Column(DateTime, default=func.now())
+
+
+class Report(Base):
+    __tablename__ = "reports"
+
+    id = Column(Integer, primary_key=True, index=True)
+    filename = Column(String, nullable=False)
+    format = Column(String, nullable=False)
+    created_at = Column(DateTime, default=func.now())
+
+
+class Upload(Base):
+    __tablename__ = "uploads"
+
+    id = Column(Integer, primary_key=True, index=True)
+    filename = Column(String, nullable=False)
+    status = Column(String, default="Processing")
+    uploaded_at = Column(DateTime, default=func.now())

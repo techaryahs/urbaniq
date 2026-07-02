@@ -1,11 +1,22 @@
+import { useEffect, useState } from "react";
 import { Clock } from "lucide-react";
+import { getRecentActivity } from "../../services/dashboardApi";
+import type { Activity } from "../../services/dashboardApi";
 
 const RecentActivity = () => {
-  const activities = [
-    { id: 1, action: "Added new park", time: "10 mins ago", detail: "Central Park Ext" },
-    { id: 2, action: "Applied buffer", time: "1 hour ago", detail: "1000m radius" },
-    { id: 3, action: "Condition updated", time: "3 hours ago", detail: "Lincoln Sq to Good" },
-  ];
+  const [activities, setActivities] = useState<Activity[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getRecentActivity()
+      .then(setActivities)
+      .catch(console.error)
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return <div className="p-4 text-center text-sm text-gray-500">Loading activity...</div>;
+  }
 
   return (
     <div className="bg-white rounded-xl shadow p-5 mt-6">
@@ -20,7 +31,7 @@ const RecentActivity = () => {
             <div>
               <p className="font-semibold text-gray-800">{activity.action}</p>
               <p className="text-sm text-gray-500">
-                {activity.detail} <span className="text-gray-300 mx-1">•</span> {activity.time}
+                {activity.details} <span className="text-gray-300 mx-1">•</span> {new Date(activity.timestamp).toLocaleString()}
               </p>
             </div>
           </div>
