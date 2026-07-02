@@ -47,7 +47,10 @@ def create_park(db: Session, park: ParkCreate):
     db_park = Park(
         name=park.name,
         area=park.area,
-        location=point
+        location=point,
+        condition=park.condition,
+        organization=park.organization,
+        survey_score=park.survey_score,
     )
 
     db.add(db_park)
@@ -55,8 +58,6 @@ def create_park(db: Session, park: ParkCreate):
     db.refresh(db_park)
 
     return park_to_dict(db_park)
-
-
 def get_parks(db: Session):
     """
     Return all parks.

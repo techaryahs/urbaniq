@@ -1,64 +1,125 @@
 import { useEffect, useState } from "react";
+
 import ConditionPieChart from "../components/Charts/ConditionPieChart";
 import OrganizationBarChart from "../components/Charts/OrganizationBarChart";
 import BufferChart from "../components/Charts/BufferChart";
 import SurveyLineChart from "../components/Charts/SurveyLineChart";
-import { getAnalyticsConditions, getAnalyticsOrganizations, getAnalyticsMonthly, getAnalyticsBuffer } from "../services/analyticsApi";
+import StatCard from "../components/Card/StatCard";
+
+import {
+  getAnalyticsSummary,
+  getAnalyticsMonthly,
+  getAnalyticsBuffer,
+} from "../services/analyticsApi";
+
+import type { AnalyticsSummary } from "../services/analyticsApi";
 
 const AnalyticsPage = () => {
   const [loading, setLoading] = useState(true);
 
+  const [summary, setSummary] = useState<AnalyticsSummary | null>(null);
+
   useEffect(() => {
-    // We would normally fetch and pass these to the charts,
-    // but the charts themselves might need updating to accept props.
-    // Let's just simulate the fetch to ensure endpoints work, 
-    // then pass them if needed. For now, we will update the charts.
     Promise.all([
-      getAnalyticsConditions(),
-      getAnalyticsOrganizations(),
+      getAnalyticsSummary(),
       getAnalyticsMonthly(),
-      getAnalyticsBuffer()
-    ]).finally(() => setLoading(false));
+      getAnalyticsBuffer(),
+    ])
+      .then(([summaryData]) => {
+        setSummary(summaryData);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
-  if (loading) {
-    return <div className="p-8 text-center">Loading analytics...</div>;
+  if (loading || !summary) {
+    return (
+      <div className="flex items-center justify-center h-screen text-lg font-semibold">
+        Loading Analytics...
+      </div>
+    );
   }
 
   return (
-    <div className="max-w-7xl mx-auto p-8">
-      <div className="flex justify-between items-end mb-8">
-        <div>
-          <h1 className="text-4xl font-bold">GIS Analytics</h1>
-          <p className="text-gray-500 mt-2">Comprehensive data visualization and reporting</p>
-        </div>
+    <div className="max-w-7xl mx-auto p-8 space-y-8">
+      {/* Header */}
+
+      <div>
+        <h1 className="text-4xl font-bold text-gray-900">
+          GIS Analytics Dashboard
+        </h1>
+
+        <p className="text-gray-500 mt-2">
+          Executive insights powered by PostgreSQL + PostGIS
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 flex flex-col items-center">
-          <h3 className="font-bold text-lg mb-4 w-full text-center">Park Condition Distribution</h3>
-          <div className="w-full max-w-sm">
+      {/* KPI Cards */}
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+        <StatCard
+          title="Total Parks"
+          value={summary.total_parks}
+          icon="parks"
+        />
+
+        <StatCard title="Good Parks" value={summary.good} icon="good" />
+
+        <StatCard title="Fair Parks" value={summary.fair} icon="fair" />
+
+        <StatCard title="Poor Parks" value={summary.poor} icon="poor" />
+
+        <StatCard
+          title="Organizations"
+          value={summary.organizations}
+          icon="organization"
+        />
+
+        <StatCard
+          title="Avg Survey"
+          value={`${summary.average_survey_score}%`}
+          icon="survey"
+        />
+      </div>
+
+      {/* Charts */}
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+          <h3 className="text-xl font-semibold mb-5 text-center">
+            Park Condition Distribution
+          </h3>
+
+          <div className="h-80">
             <ConditionPieChart />
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 flex flex-col items-center">
-          <h3 className="font-bold text-lg mb-4 w-full text-center">Parks by Organization</h3>
-          <div className="w-full h-64">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+          <h3 className="text-xl font-semibold mb-5 text-center">
+            Parks by Organization
+          </h3>
+
+          <div className="h-80">
             <OrganizationBarChart />
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 flex flex-col items-center">
-          <h3 className="font-bold text-lg mb-4 w-full text-center">Citizen Survey Trends</h3>
-          <div className="w-full h-64">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+          <h3 className="text-xl font-semibold mb-5 text-center">
+            Citizen Survey Trends
+          </h3>
+
+          <div className="h-80">
             <SurveyLineChart />
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 flex flex-col items-center">
-          <h3 className="font-bold text-lg mb-4 w-full text-center">Buffer Analysis Overview</h3>
-          <div className="w-full max-w-sm">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+          <h3 className="text-xl font-semibold mb-5 text-center">
+            Buffer Analysis Overview
+          </h3>
+
+          <div className="h-80">
             <BufferChart />
           </div>
         </div>

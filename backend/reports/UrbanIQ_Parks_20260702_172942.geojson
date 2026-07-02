@@ -1,0 +1,221 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2197,
+          28.5933
+        ]
+      },
+      "properties": {
+        "id": 1,
+        "name": "Lodhi Garden",
+        "area": null,
+        "condition": "Good",
+        "organization": "NDMC",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.5929,
+          12.9763
+        ]
+      },
+      "properties": {
+        "id": 2,
+        "name": "Cubbon Park",
+        "area": null,
+        "condition": "Good",
+        "organization": "BBMP",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.915,
+          19.2147
+        ]
+      },
+      "properties": {
+        "id": 3,
+        "name": "Sanjay Gandhi National Park",
+        "area": null,
+        "condition": "Fair",
+        "organization": "Maharashtra Forest Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.1895,
+          28.6018
+        ]
+      },
+      "properties": {
+        "id": 4,
+        "name": "Nehru Park",
+        "area": null,
+        "condition": "Good",
+        "organization": "NDMC",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.8245,
+          20.2961
+        ]
+      },
+      "properties": {
+        "id": 5,
+        "name": "Indira Gandhi Memorial Park",
+        "area": null,
+        "condition": "Poor",
+        "organization": "Bhubaneswar Municipal Corp",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.4674,
+          22.5804
+        ]
+      },
+      "properties": {
+        "id": 6,
+        "name": "Eco Park",
+        "area": null,
+        "condition": "Good",
+        "organization": "HIDCO",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.4298,
+          17.4198
+        ]
+      },
+      "properties": {
+        "id": 7,
+        "name": "KBR National Park",
+        "area": null,
+        "condition": "Fair",
+        "organization": "Telangana Forest Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8058,
+          18.9568
+        ]
+      },
+      "properties": {
+        "id": 8,
+        "name": "Kamala Nehru Park",
+        "area": null,
+        "condition": "Poor",
+        "organization": "BMC",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.2411,
+          13.0067
+        ]
+      },
+      "properties": {
+        "id": 9,
+        "name": "Guindy National Park",
+        "area": null,
+        "condition": "Good",
+        "organization": "Tamil Nadu Forest Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.8475,
+          26.8922
+        ]
+      },
+      "properties": {
+        "id": 10,
+        "name": "Smriti Van Park",
+        "area": null,
+        "condition": "Fair",
+        "organization": "Jaipur Development Authority",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.96543188092897,
+          40.78973805327026
+        ]
+      },
+      "properties": {
+        "id": 11,
+        "name": "Stanlees",
+        "area": 5000,
+        "condition": "Good",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -73.78682577066591,
+          40.72582559354261
+        ]
+      },
+      "properties": {
+        "id": 12,
+        "name": "Stack park",
+        "area": 5000,
+        "condition": "Poor",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    }
+  ]
+}
