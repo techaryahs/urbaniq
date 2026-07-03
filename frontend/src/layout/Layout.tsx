@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 
 interface LayoutProps {
@@ -5,9 +6,13 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
+  const location = useLocation();
+
+  const isLoginPage = location.pathname === "/login";
+
   return (
     <>
-      <Navbar />
+      {!isLoginPage && <Navbar />}
 
       <main className="bg-slate-100 min-h-screen">{children}</main>
     </>

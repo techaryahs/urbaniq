@@ -4,13 +4,12 @@ from geoalchemy2 import Geometry
 
 from app.database import Base
 
+
 class Park(Base):
     __tablename__ = "parks"
 
     id = Column(Integer, primary_key=True, index=True)
-
     name = Column(String, nullable=False)
-
     area = Column(Integer)
 
     location = Column(
@@ -47,3 +46,19 @@ class Upload(Base):
     filename = Column(String, nullable=False)
     status = Column(String, default="Processing")
     uploaded_at = Column(DateTime, default=func.now())
+
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+
+    full_name = Column(String(100), nullable=False)
+
+    email = Column(String(150), unique=True, index=True, nullable=False)
+
+    password = Column(String(255), nullable=False)
+
+    role = Column(String(30), nullable=False, default="researcher")
+
+    created_at = Column(DateTime, nullable=False, server_default=func.now())

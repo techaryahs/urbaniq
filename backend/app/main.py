@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.database import Base, engine
 from app.config import DATABASE_URL
+from app.routers import auth
 
 # IMPORTANT: Import all models so SQLAlchemy registers every table
 import app.models
@@ -46,6 +47,7 @@ app.include_router(dashboard.router)
 app.include_router(analytics.router)
 app.include_router(reports.router)
 app.include_router(upload.router)
+app.include_router(auth.router)
 
 
 @app.get("/")
