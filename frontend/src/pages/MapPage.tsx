@@ -17,6 +17,9 @@ export interface Park {
   latitude: number;
   longitude: number;
   condition: string;
+  organization?: string;
+  area?: number;
+  survey_score?: number;
 }
 
 const MapPage = () => {

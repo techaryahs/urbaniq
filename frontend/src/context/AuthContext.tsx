@@ -6,10 +6,7 @@ import {
   ReactNode,
 } from "react";
 
-import {
-  login as loginService,
-  getCurrentUser,
-} from "../services/authService";
+import { login as loginService, getCurrentUser } from "../services/authService";
 
 interface User {
   id: number;
@@ -33,11 +30,7 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider = ({
-  children,
-}: {
-  children: ReactNode;
-}) => {
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -86,7 +79,12 @@ export const AuthProvider = ({
         loading,
         login,
         logout,
+
         isAuthenticated: !!user,
+
+        isResearcher: user?.role === "researcher",
+
+        isCityPlanner: user?.role === "city_planner",
       }}
     >
       {children}

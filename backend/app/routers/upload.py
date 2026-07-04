@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Depends, UploadFile, File
 from sqlalchemy.orm import Session
 from app.database import SessionLocal
-from app.models import Upload, Park, Activity
+from app.models import Upload, Park, Activity, User
+from app.auth.permissions import require_researcher
 from app.schemas import UploadResponse
 import json
 from shapely.geometry import shape
@@ -20,7 +21,11 @@ def get_db():
         db.close()
 
 @router.post("/")
-def upload_file(file: UploadFile = File(...), db: Session = Depends(get_db)):
+def upload_file(
+    file: UploadFile = File(...),
+    db: Session = Depends(get_db),
+    current_user: User = Depends(require_researcher),
+):
     imported_count = 0
     try:
         content = file.file.read()

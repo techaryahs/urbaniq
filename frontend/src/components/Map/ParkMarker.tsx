@@ -7,6 +7,9 @@ interface Props {
   latitude: number;
   longitude: number;
   condition: string;
+  organization?: string;
+  area?: number;
+  survey_score?: number;
   onParkSelect: (park: {
     id: number;
     name: string;
@@ -18,27 +21,36 @@ interface Props {
   bufferActive?: boolean;
 }
 
-const getMarkerColor = (condition: string, bufferActive?: boolean, isInsideBuffer?: boolean) => {
-  if (bufferActive) {
-    return isInsideBuffer ? "green" : "blue";
-  }
+import greenMarker from "../../assets/markers/green-marker.svg";
+import yellowMarker from "../../assets/markers/yellow-marker.svg";
+import redMarker from "../../assets/markers/red-marker.svg";
+import blueMarker from "../../assets/markers/blue-marker.svg";
 
-  switch (condition) {
-    case "Good":
+const ICONS: Record<string, string> = {
+  green: greenMarker,
+  yellow: yellowMarker,
+  red: redMarker,
+  blue: blueMarker,
+};
+
+const getMarkerColor = (condition: string) => {
+  const norm = condition.trim().toLowerCase();
+  switch (norm) {
+    case "good":
       return "green";
-    case "Fair":
-      return "orange";
-    case "Poor":
+    case "fair":
+      return "yellow";
+    case "poor":
       return "red";
     default:
       return "blue";
   }
 };
 
-const createIcon = (color: string) =>
+const createIcon = (color: string, isBright: boolean) =>
   new L.Icon({
-    iconUrl: `https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-${color}.png`,
-    shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+    iconUrl: ICONS[color] || ICONS.blue,
+    className: isBright ? "marker-bright" : "",
     iconSize: [25, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
@@ -50,6 +62,9 @@ const ParkMarker = ({
   latitude,
   longitude,
   condition,
+  organization,
+  area,
+  survey_score,
   onParkSelect,
   isInsideBuffer,
   bufferActive,
@@ -57,7 +72,7 @@ const ParkMarker = ({
   return (
     <Marker
       position={[latitude, longitude]}
-      icon={createIcon(getMarkerColor(condition, bufferActive, isInsideBuffer))}
+      icon={createIcon(getMarkerColor(condition), !!(bufferActive && isInsideBuffer))}
       eventHandlers={{
         click: () =>
           onParkSelect({
@@ -73,9 +88,26 @@ const ParkMarker = ({
         <div className="space-y-2">
           <h2 className="font-bold text-lg">{name}</h2>
 
-          <p>
-            <strong>Condition:</strong> {condition}
-          </p>
+          <div className="text-sm">
+            <p>
+              <strong>Condition:</strong> {condition}
+            </p>
+            {organization && (
+              <p>
+                <strong>Organization:</strong> {organization}
+              </p>
+            )}
+            {area !== undefined && (
+              <p>
+                <strong>Area:</strong> {area.toLocaleString()} m²
+              </p>
+            )}
+            {survey_score !== undefined && (
+              <p>
+                <strong>Last Survey:</strong> {survey_score}%
+              </p>
+            )}
+          </div>
         </div>
       </Popup>
     </Marker>

@@ -128,6 +128,12 @@ def login(
         }
     )
 
+    print("=" * 60)
+    print("LOGIN SUCCESS")
+    print("EMAIL:", user.email)
+    print("ROLE :", user.role)
+    print("=" * 60)
+
     return {
         "access_token": token,
         "token_type": "bearer",
@@ -142,6 +148,9 @@ def get_current_user(
     db: Session = Depends(get_db),
 ):
 
+    print("\n================ AUTH DEBUG ================")
+    print("TOKEN:", token)
+
     credentials_exception = HTTPException(
         status_code=401,
         detail="Could not validate credentials",
@@ -155,12 +164,20 @@ def get_current_user(
             algorithms=[ALGORITHM],
         )
 
+        print("PAYLOAD:", payload)
+
         email = payload.get("sub")
+        role = payload.get("role")
+
+        print("EMAIL:", email)
+        print("ROLE :", role)
 
         if email is None:
+            print("EMAIL NOT FOUND IN TOKEN")
             raise credentials_exception
 
-    except JWTError:
+    except JWTError as e:
+        print("JWT ERROR:", str(e))
         raise credentials_exception
 
     user = (
@@ -169,8 +186,14 @@ def get_current_user(
         .first()
     )
 
+    print("DB USER:", user)
+
     if user is None:
+        print("USER NOT FOUND IN DATABASE")
         raise credentials_exception
+
+    print("AUTH SUCCESS")
+    print("===========================================\n")
 
     return user
 
@@ -185,5 +208,4 @@ def get_current_user(
 def read_current_user(
     current_user: User = Depends(get_current_user),
 ):
-
     return current_user

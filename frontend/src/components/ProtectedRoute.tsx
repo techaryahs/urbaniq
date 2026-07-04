@@ -3,10 +3,12 @@ import { useAuth } from "../context/AuthContext";
 
 interface Props {
   children: React.ReactNode;
+
+  allowedRoles?: ("researcher" | "city_planner")[];
 }
 
-const ProtectedRoute = ({ children }: Props) => {
-  const { isAuthenticated, loading } = useAuth();
+const ProtectedRoute = ({ children, allowedRoles }: Props) => {
+  const { user, isAuthenticated, loading } = useAuth();
 
   if (loading) {
     return (
@@ -18,6 +20,14 @@ const ProtectedRoute = ({ children }: Props) => {
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
+  }
+
+  if (
+    allowedRoles &&
+    user &&
+    !allowedRoles.includes(user.role as "researcher" | "city_planner")
+  ) {
+    return <Navigate to="/dashboard" replace />;
   }
 
   return <>{children}</>;

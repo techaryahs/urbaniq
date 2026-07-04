@@ -6,8 +6,9 @@ export interface Park {
   latitude: number;
   longitude: number;
   condition: string;
-  organization: string;
-  survey_score: number;
+  organization?: string;
+  survey_score?: number;
+  area?: number;
 }
 
 interface GeoJSONFeature {
@@ -59,9 +60,10 @@ export const getParks = async (): Promise<Park[]> => {
     name: feature.properties.name,
     latitude: feature.geometry.coordinates[1],
     longitude: feature.geometry.coordinates[0],
-    condition: feature.properties.condition,
+    condition: feature.properties.condition || "Unknown",
     organization: feature.properties.organization,
     survey_score: feature.properties.survey_score,
+    area: feature.properties.area || undefined,
   }));
 };
 

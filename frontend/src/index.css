@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@layer components {
+  .marker-bright {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 1)) brightness(1.5) saturate(1.5);
+    z-index: 1000 !important;
+  }
+}

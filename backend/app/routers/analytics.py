@@ -3,7 +3,8 @@ from sqlalchemy.orm import Session
 from sqlalchemy import func
 
 from app.database import SessionLocal
-from app.models import Park
+from app.models import Park, User
+from app.auth.permissions import require_city_planner
 
 router = APIRouter(
     prefix="/analytics",

@@ -32,12 +32,52 @@ function App() {
             <ProtectedRoute>
               <Layout>
                 <Routes>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/map" element={<MapPage />} />
-                  <Route path="/upload" element={<UploadPage />} />
-                  <Route path="/analytics" element={<AnalyticsPage />} />
-                  <Route path="/reports" element={<ReportsPage />} />
-                  <Route path="*" element={<Navigate to="/" replace />} />
+                  <Route
+                    path="/"
+                    element={
+                      <ProtectedRoute>
+                        <Dashboard />
+                      </ProtectedRoute>
+                    }
+                  />
+
+                  <Route
+                    path="/map"
+                    element={
+                      <ProtectedRoute
+                        allowedRoles={["researcher", "city_planner"]}
+                      >
+                        <MapPage />
+                      </ProtectedRoute>
+                    }
+                  />
+
+                  <Route
+                    path="/upload"
+                    element={
+                      <ProtectedRoute allowedRoles={["researcher"]}>
+                        <UploadPage />
+                      </ProtectedRoute>
+                    }
+                  />
+
+                  <Route
+                    path="/analytics"
+                    element={
+                      <ProtectedRoute allowedRoles={["city_planner"]}>
+                        <AnalyticsPage />
+                      </ProtectedRoute>
+                    }
+                  />
+
+                  <Route
+                    path="/reports"
+                    element={
+                      <ProtectedRoute allowedRoles={["city_planner"]}>
+                        <ReportsPage />
+                      </ProtectedRoute>
+                    }
+                  />
                 </Routes>
               </Layout>
             </ProtectedRoute>

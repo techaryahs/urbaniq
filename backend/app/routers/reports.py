@@ -12,7 +12,8 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph
 from openpyxl import Workbook
 
 from app.database import SessionLocal
-from app.models import Report, Park
+from app.models import Report, Park, User
+from app.auth.permissions import require_city_planner
 from app.schemas import ReportResponse
 from app.crud import get_parks_geojson
 
@@ -60,7 +61,7 @@ def get_db():
     response_model=list[ReportResponse]
 )
 def get_reports_history(
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
 
     return (
@@ -79,7 +80,7 @@ def get_reports_history(
 
 @router.get("/summary")
 def get_reports_summary(
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
 
     total = db.query(Park).count()
@@ -188,7 +189,7 @@ def save_report_history(
 
 @router.post("/pdf")
 def export_pdf(
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
 
     summary = get_reports_summary(db)
@@ -298,7 +299,7 @@ def export_pdf(
 
 @router.post("/excel")
 def export_excel(
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
 
     filename = (
@@ -360,7 +361,7 @@ def export_excel(
 
 @router.post("/geojson")
 def export_geojson(
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
 
     filename = (
@@ -424,7 +425,7 @@ def download_report(
 @router.delete("/{report_id}")
 def delete_report(
     report_id: int,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
 
     report = (
@@ -461,7 +462,7 @@ def delete_report(
 
 @router.get("/stats")
 def report_statistics(
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
 
     reports = db.query(Report).all()

@@ -5,7 +5,7 @@ import { useAuth } from "../../context/AuthContext";
 const Navbar = () => {
   const navigate = useNavigate();
 
-  const { user, logout } = useAuth();
+  const { user, logout, isResearcher, isCityPlanner } = useAuth();
 
   const handleLogout = () => {
     logout();
@@ -16,7 +16,6 @@ const Navbar = () => {
     <header className="bg-slate-900 text-white shadow-lg">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-8 py-4">
         {/* Logo */}
-
         <div className="flex items-center gap-3">
           <MapPinned className="text-blue-400" size={32} />
 
@@ -30,15 +29,15 @@ const Navbar = () => {
         </div>
 
         {/* Navigation */}
-
         <nav>
           <ul className="flex items-center gap-8 text-sm font-medium">
+            {/* Dashboard */}
             <li>
               <NavLink
                 to="/"
                 end
                 className={({ isActive }) =>
-                  `hover:text-blue-400 ${
+                  `hover:text-blue-400 transition ${
                     isActive ? "text-blue-400 font-bold" : ""
                   }`
                 }
@@ -47,11 +46,12 @@ const Navbar = () => {
               </NavLink>
             </li>
 
+            {/* Map - Everyone */}
             <li>
               <NavLink
                 to="/map"
                 className={({ isActive }) =>
-                  `hover:text-blue-400 ${
+                  `hover:text-blue-400 transition ${
                     isActive ? "text-blue-400 font-bold" : ""
                   }`
                 }
@@ -60,65 +60,79 @@ const Navbar = () => {
               </NavLink>
             </li>
 
-            <li>
-              <NavLink
-                to="/upload"
-                className={({ isActive }) =>
-                  `hover:text-blue-400 ${
-                    isActive ? "text-blue-400 font-bold" : ""
-                  }`
-                }
-              >
-                Upload
-              </NavLink>
-            </li>
+            {/* Researcher Only */}
+            {isResearcher && (
+              <li>
+                <NavLink
+                  to="/upload"
+                  className={({ isActive }) =>
+                    `hover:text-blue-400 transition ${
+                      isActive ? "text-blue-400 font-bold" : ""
+                    }`
+                  }
+                >
+                  Upload
+                </NavLink>
+              </li>
+            )}
 
-            <li>
-              <NavLink
-                to="/analytics"
-                className={({ isActive }) =>
-                  `hover:text-blue-400 ${
-                    isActive ? "text-blue-400 font-bold" : ""
-                  }`
-                }
-              >
-                Analytics
-              </NavLink>
-            </li>
+            {/* City Planner Only */}
+            {isCityPlanner && (
+              <li>
+                <NavLink
+                  to="/analytics"
+                  className={({ isActive }) =>
+                    `hover:text-blue-400 transition ${
+                      isActive ? "text-blue-400 font-bold" : ""
+                    }`
+                  }
+                >
+                  Analytics
+                </NavLink>
+              </li>
+            )}
 
-            <li>
-              <NavLink
-                to="/reports"
-                className={({ isActive }) =>
-                  `hover:text-blue-400 ${
-                    isActive ? "text-blue-400 font-bold" : ""
-                  }`
-                }
-              >
-                Reports
-              </NavLink>
-            </li>
+            {/* City Planner Only */}
+            {isCityPlanner && (
+              <li>
+                <NavLink
+                  to="/reports"
+                  className={({ isActive }) =>
+                    `hover:text-blue-400 transition ${
+                      isActive ? "text-blue-400 font-bold" : ""
+                    }`
+                  }
+                >
+                  Reports
+                </NavLink>
+              </li>
+            )}
           </ul>
         </nav>
 
-        {/* User */}
-
+        {/* User Info */}
         <div className="flex items-center gap-5">
-          <div className="flex items-center gap-2">
-            <UserCircle size={34} className="text-blue-400" />
+          <div className="flex items-center gap-3">
+            <UserCircle size={36} className="text-blue-400" />
 
             <div>
               <h4 className="text-sm font-semibold">{user?.full_name}</h4>
 
-              <p className="text-xs text-slate-400 capitalize">
+              <span
+                className={`inline-flex rounded-full px-2 py-1 text-xs font-semibold ${
+                  isResearcher
+                    ? "bg-green-600 text-white"
+                    : "bg-blue-600 text-white"
+                }`}
+              >
                 {user?.role?.replace("_", " ")}
-              </p>
+              </span>
             </div>
           </div>
 
           <button
             onClick={handleLogout}
-            className="flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-sm hover:bg-red-700 transition"
+            className="flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-sm font-medium transition hover:bg-red-700"
           >
             <LogOut size={18} />
             Logout
