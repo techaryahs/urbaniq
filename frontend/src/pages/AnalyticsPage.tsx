@@ -57,16 +57,16 @@ const AnalyticsPage = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
         <StatCard
-          title="Total Parks"
-          value={summary.total_parks}
+          title="Total Public Spaces"
+          value={summary.total_public_spaces || summary.total_parks}
           icon="parks"
         />
 
-        <StatCard title="Good Parks" value={summary.good} icon="good" />
+        <StatCard title="Good Spaces" value={summary.good} icon="good" />
 
-        <StatCard title="Fair Parks" value={summary.fair} icon="fair" />
+        <StatCard title="Fair Spaces" value={summary.fair} icon="fair" />
 
-        <StatCard title="Poor Parks" value={summary.poor} icon="poor" />
+        <StatCard title="Poor Spaces" value={summary.poor} icon="poor" />
 
         <StatCard
           title="Organizations"
@@ -86,7 +86,7 @@ const AnalyticsPage = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <h3 className="text-xl font-semibold mb-5 text-center">
-            Park Condition Distribution
+            Public Space Condition Distribution
           </h3>
 
           <div className="h-80">
@@ -96,7 +96,7 @@ const AnalyticsPage = () => {
 
         <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
           <h3 className="text-xl font-semibold mb-5 text-center">
-            Parks by Organization
+            Public Spaces by Organization
           </h3>
 
           <div className="h-80">

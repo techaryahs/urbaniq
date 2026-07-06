@@ -3,8 +3,9 @@ import {
   useContext,
   useEffect,
   useState,
-  ReactNode,
 } from "react";
+import type { ReactNode } from "react";
+
 
 import { login as loginService, getCurrentUser } from "../services/authService";
 
@@ -26,7 +27,10 @@ interface AuthContextType {
   login: (data: LoginData) => Promise<void>;
   logout: () => void;
   isAuthenticated: boolean;
+  isResearcher: boolean;
+  isCityPlanner: boolean;
 }
+
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 

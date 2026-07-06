@@ -4,6 +4,8 @@ import SearchBar from "../components/Search/SearchBar";
 import FilterBar from "../components/Filter/FilterBar";
 import GISToolbar from "../components/Map/GISToolbar";
 import AnalyticsSidebar from "../components/Analytics/AnalyticsSidebar";
+import ParkInfo from "../components/Sidebar/ParkInfo";
+import AddSurveyModal from "../components/Map/AddSurveyModal";
 import type { BufferGeoJSON } from "../services/parkService";
 import { getParks } from "../services/parkService";
 import type { BasemapKey } from "../utils/mapLayers";
@@ -14,6 +16,7 @@ import { getParkConditionStats } from "../utils/statistics";
 export interface Park {
   id: number;
   name: string;
+  type?: string;
   latitude: number;
   longitude: number;
   condition: string;
@@ -24,9 +27,10 @@ export interface Park {
 
 const MapPage = () => {
   const [parks, setParks] = useState<Park[]>([]);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedPark, setSelectedPark] = useState<Park | null>(null);
+  const [showAddSurvey, setShowAddSurvey] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+
   const [condition, setCondition] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -156,15 +160,45 @@ const MapPage = () => {
 
         {/* Right: Sidebar */}
         <div className="w-full lg:w-1/4 flex flex-col gap-6 overflow-y-auto max-h-[80vh] pr-2">
-          {activeLayers.includes("analytics") && (
-            <AnalyticsSidebar 
-              stats={stats} 
-              spatialStats={spatialStats} 
-              bufferStats={bufferStats} 
+          {selectedPark ? (
+            <ParkInfo
+              park={selectedPark}
+              onClear={() => setSelectedPark(null)}
+              onCreateSurvey={() => setShowAddSurvey(true)}
             />
+          ) : (
+            activeLayers.includes("analytics") && (
+              <AnalyticsSidebar 
+                stats={stats} 
+                spatialStats={spatialStats} 
+                bufferStats={bufferStats} 
+              />
+            )
           )}
         </div>
       </div>
+
+      {showAddSurvey && selectedPark && (
+        <AddSurveyModal
+          parkId={selectedPark.id}
+          parkName={selectedPark.name}
+          onClose={() => setShowAddSurvey(false)}
+          onSave={async () => {
+            setShowAddSurvey(false);
+            await loadParks();
+            try {
+              // Re-fetch to inspect newly updated metrics
+              const freshParks = await getParks();
+              const updated = freshParks.find((p) => p.id === selectedPark.id);
+              if (updated) {
+                setSelectedPark(updated);
+              }
+            } catch (err) {
+              console.error("Error refreshing selected park:", err);
+            }
+          }}
+        />
+      )}
     </div>
   );
 };

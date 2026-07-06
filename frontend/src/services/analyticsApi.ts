@@ -26,6 +26,7 @@ export interface BufferStat {
 
 export interface AnalyticsSummary {
   total_parks: number;
+  total_public_spaces?: number;
   good: number;
   fair: number;
   poor: number;

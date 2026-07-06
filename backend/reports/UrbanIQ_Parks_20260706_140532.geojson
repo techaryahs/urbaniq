@@ -1,0 +1,185 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.5946,
+          12.9763
+        ]
+      },
+      "properties": {
+        "id": 1,
+        "name": "Cubbon Park",
+        "area": null,
+        "condition": "Good",
+        "organization": "BBMP",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.2205,
+          28.5933
+        ]
+      },
+      "properties": {
+        "id": 2,
+        "name": "Lodhi Garden",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "NDMC",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.9142,
+          19.2147
+        ]
+      },
+      "properties": {
+        "id": 3,
+        "name": "Sanjay Gandhi National Park",
+        "area": null,
+        "condition": "Good",
+        "organization": "Forest Department",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.8057,
+          18.9569
+        ]
+      },
+      "properties": {
+        "id": 4,
+        "name": "Hanging Garden",
+        "area": null,
+        "condition": "Fair",
+        "organization": "BMC",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.4675,
+          22.5805
+        ]
+      },
+      "properties": {
+        "id": 5,
+        "name": "Eco Park",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "WBHIDCO",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.8245,
+          20.2961
+        ]
+      },
+      "properties": {
+        "id": 6,
+        "name": "Indira Gandhi Memorial Park",
+        "area": null,
+        "condition": "Good",
+        "organization": "BMC",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.4744,
+          17.4087
+        ]
+      },
+      "properties": {
+        "id": 7,
+        "name": "Nehru Park",
+        "area": null,
+        "condition": "Fair",
+        "organization": "GHMC",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.8463,
+          25.436
+        ]
+      },
+      "properties": {
+        "id": 8,
+        "name": "Company Garden",
+        "area": null,
+        "condition": "Good",
+        "organization": "Nagar Nigam",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.7794,
+          30.7461
+        ]
+      },
+      "properties": {
+        "id": 9,
+        "name": "Zakir Hussain Rose Garden",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Municipal Corporation",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8567,
+          18.5167
+        ]
+      },
+      "properties": {
+        "id": 10,
+        "name": "Kamala Nehru Park",
+        "area": null,
+        "condition": "Good",
+        "organization": "PMC",
+        "survey_score": 85.0
+      }
+    }
+  ]
+}

@@ -8,12 +8,18 @@ from app.routers import auth
 # IMPORTANT: Import all models so SQLAlchemy registers every table
 import app.models
 
+from fastapi.staticfiles import StaticFiles
+import os
+
 from app.routers import (
     parks,
     dashboard,
     analytics,
     reports,
     upload,
+    organizations,
+    surveys,
+    public_spaces,
 )
 
 print("=" * 60)
@@ -41,6 +47,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Mount static files for upload verification
+os.makedirs("uploads/surveys", exist_ok=True)
+app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
+
 # Routers
 app.include_router(parks.router)
 app.include_router(dashboard.router)
@@ -48,10 +58,14 @@ app.include_router(analytics.router)
 app.include_router(reports.router)
 app.include_router(upload.router)
 app.include_router(auth.router)
+app.include_router(organizations.router)
+app.include_router(surveys.router)
+app.include_router(public_spaces.router)
+
 
 
 @app.get("/")
 def root():
     return {
         "message": "UrbanIQ Backend Running 🚀"
-    }
+    }

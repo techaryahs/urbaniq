@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Depends, UploadFile, File
 from sqlalchemy.orm import Session
 from app.database import SessionLocal
-from app.models import Upload, Park, Activity, User
+from app.models import Upload, Activity, User, Organization
+from app.models.public_space import PublicSpace, PublicSpaceType
 from app.auth.permissions import require_researcher
 from app.schemas import UploadResponse
 import json
@@ -43,7 +44,7 @@ def upload_file(
                 name = properties.get("name", "Unnamed Park")
                 
                 # Check for duplicates by name
-                existing = db.query(Park).filter(Park.name == name).first()
+                existing = db.query(PublicSpace).filter(PublicSpace.name == name).first()
                 if existing:
                     continue
                 
@@ -67,14 +68,38 @@ def upload_file(
                 organization = properties.get("organization", "Parks Dept")
                 
                 shapely_geom = shape(geometry_data)
+
+                # Resolve Organization
+                org_obj = db.query(Organization).filter(Organization.name == organization).first()
+                if not org_obj:
+                    org_obj = Organization(name=organization)
+                    db.add(org_obj)
+                    db.commit()
+                    db.refresh(org_obj)
+
+                # Map type if it exists in properties
+                ps_type = PublicSpaceType.PARK
+                raw_type = properties.get("type")
+                if raw_type:
+                    try:
+                        norm = str(raw_type).strip().upper()
+                        # Fallback mapping
+                        if norm == "OPEN SPACE": norm = "OPEN_SPACE"
+                        ps_type = PublicSpaceType[norm]
+                    except KeyError:
+                        pass
                 
-                new_park = Park(
+                new_space = PublicSpace(
                     name=name,
+                    type=ps_type,
                     condition=condition,
-                    organization=organization,
-                    location=from_shape(shapely_geom, srid=4326)
+                    organization_id=org_obj.id,
+                    location=from_shape(shapely_geom, srid=4326),
+                    latitude=shapely_geom.y,
+                    longitude=shapely_geom.x,
+                    created_by=current_user.id
                 )
-                db.add(new_park)
+                db.add(new_space)
                 imported_count += 1
             
             db.commit()

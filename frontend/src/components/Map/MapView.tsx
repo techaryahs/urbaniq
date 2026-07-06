@@ -9,7 +9,7 @@ import { GeomanControl } from "./GeomanControl";
 import Events from "./Events";
 import FeatureList from "./FeatureList";
 
-import type { Park } from "../../pages/Dashboard/Dashboard";
+import type { Park } from "../../services/parkService";
 import type { BufferGeoJSON } from "../../services/parkService";
 import type { LayerKey } from "./LayerControl";
 import type { BasemapKey } from "../../utils/mapLayers";
@@ -66,13 +66,13 @@ const MapClickHandler = ({ onMapClick }: ClickHandlerProps) => {
 const MapBoundsFitter = ({ parks, readOnly }: { parks: Park[]; readOnly: boolean }) => {
   const map = useMapEvents({});
   useEffect(() => {
-    if (readOnly && parks.length > 0) {
+    if (parks.length > 0) {
       const bounds = L.latLngBounds(parks.map(p => [p.latitude, p.longitude]));
       if (bounds.isValid()) {
         map.fitBounds(bounds, { padding: [20, 20] });
       }
     }
-  }, [parks, readOnly, map]);
+  }, [parks, map]);
   
   return null;
 };
@@ -162,10 +162,11 @@ const MapView = ({
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [setMeasurePoints, setMeasureDistance, setBufferGeoJSON, setNearbyParkIds]);
 
-  const handleSavePark = async (name: string, parkCondition: string) => {
+  const handleSavePark = async (name: string, type: string, parkCondition: string) => {
     try {
       await createPark({
         name,
+        type,
         latitude: clickedLocation.latitude,
         longitude: clickedLocation.longitude,
         condition: parkCondition,
@@ -245,6 +246,7 @@ const MapView = ({
               key={park.id}
               id={park.id}
               name={park.name}
+              type={park.type}
               latitude={park.latitude}
               longitude={park.longitude}
               condition={park.condition}

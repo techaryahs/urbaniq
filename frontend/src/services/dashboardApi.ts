@@ -2,6 +2,7 @@ import api from "./api";
 
 export interface DashboardStats {
   total_parks: number;
+  total_public_spaces?: number;
   good_condition: number;
   fair_condition: number;
   poor_condition: number;

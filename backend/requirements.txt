@@ -16,7 +16,7 @@ GeoAlchemy2==0.20.0
 geopandas==1.1.4
 h11==0.16.0
 idna==3.18
-numpy==2.5.0
+numpy==2.3.5
 openpyxl==3.1.5
 packaging==26.2
 pandas==3.0.4

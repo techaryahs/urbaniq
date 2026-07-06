@@ -2,8 +2,8 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
 } from "react-router-dom";
+
 
 import Layout from "./layout/Layout";
 
@@ -13,8 +13,11 @@ import UploadPage from "./pages/UploadPage";
 import AnalyticsPage from "./pages/AnalyticsPage";
 import ReportsPage from "./pages/ReportsPage";
 import Login from "./pages/Login";
+import OrganizationsPage from "./pages/OrganizationsPage";
+import SurveysPage from "./pages/SurveysPage";
 
 import ProtectedRoute from "./components/ProtectedRoute";
+
 
 function App() {
   return (
@@ -51,6 +54,30 @@ function App() {
                       </ProtectedRoute>
                     }
                   />
+
+                  <Route
+                    path="/surveys"
+                    element={
+                      <ProtectedRoute
+                        allowedRoles={["researcher", "city_planner"]}
+                      >
+                        <SurveysPage />
+                      </ProtectedRoute>
+                    }
+                  />
+
+                  <Route
+                    path="/organizations"
+                    element={
+                      <ProtectedRoute
+                        allowedRoles={["researcher", "city_planner"]}
+                      >
+                        <OrganizationsPage />
+                      </ProtectedRoute>
+                    }
+                  />
+
+
 
                   <Route
                     path="/upload"

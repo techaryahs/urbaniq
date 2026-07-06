@@ -3,6 +3,7 @@ import api from "./api";
 export interface Park {
   id: number;
   name: string;
+  type?: string;
   latitude: number;
   longitude: number;
   condition: string;
@@ -20,6 +21,7 @@ interface GeoJSONFeature {
   properties: {
     id: number;
     name: string;
+    type: string;
     area: number | null;
     condition: string;
     organization: string;
@@ -43,6 +45,7 @@ export interface BufferGeoJSON {
 export interface NearbyPark {
   id: number;
   name: string;
+  type?: string;
   area: number;
   latitude: number;
   longitude: number;
@@ -50,14 +53,15 @@ export interface NearbyPark {
 }
 
 /**
- * Fetch all parks
+ * Fetch all public spaces mapped of interface Park
  */
 export const getParks = async (): Promise<Park[]> => {
-  const response = await api.get<GeoJSONResponse>("/parks/geojson");
+  const response = await api.get<GeoJSONResponse>("/public-spaces/geojson");
 
   return response.data.features.map((feature) => ({
     id: feature.properties.id,
     name: feature.properties.name,
+    type: feature.properties.type,
     latitude: feature.geometry.coordinates[1],
     longitude: feature.geometry.coordinates[0],
     condition: feature.properties.condition || "Unknown",
@@ -68,22 +72,22 @@ export const getParks = async (): Promise<Park[]> => {
 };
 
 /**
- * Create Park
+ * Create Park (Public Space of type PARK)
  */
 export const createPark = async (park: Omit<Park, "id">): Promise<void> => {
-  await api.post("/parks", {
+  await api.post("/public-spaces", {
     name: park.name,
+    type: park.type || "PARK",
     area: park.area ?? 5000,
     latitude: park.latitude,
     longitude: park.longitude,
     condition: park.condition,
-    organization: park.organization,
-    survey_score: park.survey_score,
+    organization_id: undefined, // Or resolved if needed
   });
 };
 
 /**
- * Get nearest park
+ * Get nearest public space
  */
 export const getNearestPark = async (latitude: number, longitude: number) => {
   const response = await api.get("/parks/nearest", {
@@ -97,7 +101,7 @@ export const getNearestPark = async (latitude: number, longitude: number) => {
 };
 
 /**
- * Get nearby parks
+ * Get nearby public spaces
  */
 export const getNearbyParks = async (
   latitude: number,

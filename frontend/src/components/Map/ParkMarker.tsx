@@ -4,6 +4,7 @@ import { Marker, Popup } from "react-leaflet";
 interface Props {
   id: number;
   name: string;
+  type?: string;
   latitude: number;
   longitude: number;
   condition: string;
@@ -22,43 +23,38 @@ interface Props {
 }
 
 import greenMarker from "../../assets/markers/green-marker.svg";
+import blueMarker from "../../assets/markers/blue-marker.svg";
+import orangeMarker from "../../assets/markers/orange-marker.svg";
+import purpleMarker from "../../assets/markers/purple-marker.svg";
 import yellowMarker from "../../assets/markers/yellow-marker.svg";
 import redMarker from "../../assets/markers/red-marker.svg";
-import blueMarker from "../../assets/markers/blue-marker.svg";
 
-const ICONS: Record<string, string> = {
-  green: greenMarker,
-  yellow: yellowMarker,
-  red: redMarker,
-  blue: blueMarker,
-};
-
-const getMarkerColor = (condition: string) => {
-  const norm = condition.trim().toLowerCase();
-  switch (norm) {
-    case "good":
-      return "green";
-    case "fair":
-      return "yellow";
-    case "poor":
-      return "red";
+// Helper function to return marker SVG import matching the type
+function getMarkerIcon(type: string) {
+  switch (type.toLowerCase()) {
+    case "park":
+    case "parks":
+      return greenMarker;
+    case "lake":
+      return blueMarker;
+    case "school":
+      return orangeMarker;
+    case "garden":
+      return purpleMarker;
+    case "playground":
+      return yellowMarker;
+    case "open_space":
+    case "open space":
+      return redMarker;
     default:
-      return "blue";
+      return greenMarker;
   }
-};
-
-const createIcon = (color: string, isBright: boolean) =>
-  new L.Icon({
-    iconUrl: ICONS[color] || ICONS.blue,
-    className: isBright ? "marker-bright" : "",
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-  });
+}
 
 const ParkMarker = ({
   id,
   name,
+  type,
   latitude,
   longitude,
   condition,
@@ -69,10 +65,36 @@ const ParkMarker = ({
   isInsideBuffer,
   bufferActive,
 }: Props) => {
+  
+  // Reconstruct publicSpace object and console.log it along with its type as per requirements
+  const publicSpace = {
+    id,
+    name,
+    type,
+    latitude,
+    longitude,
+    condition,
+    organization,
+    area,
+    survey_score,
+  };
+  console.log(publicSpace);
+  console.log(publicSpace.type);
+
+  const iconUrl = getMarkerIcon(type || "park");
+
+  const icon = L.icon({
+    iconUrl,
+    className: bufferActive && isInsideBuffer ? "marker-bright" : "",
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+  });
+
   return (
     <Marker
       position={[latitude, longitude]}
-      icon={createIcon(getMarkerColor(condition), !!(bufferActive && isInsideBuffer))}
+      icon={icon}
       eventHandlers={{
         click: () =>
           onParkSelect({
@@ -89,6 +111,9 @@ const ParkMarker = ({
           <h2 className="font-bold text-lg">{name}</h2>
 
           <div className="text-sm">
+            <p>
+              <strong>Type:</strong> {type ? type.replace("_", " ") : "PARK"}
+            </p>
             <p>
               <strong>Condition:</strong> {condition}
             </p>

@@ -60,6 +60,36 @@ const Navbar = () => {
               </NavLink>
             </li>
 
+            {/* Organizations - Everyone */}
+            <li>
+              <NavLink
+                to="/organizations"
+                className={({ isActive }) =>
+                  `hover:text-blue-400 transition ${
+                    isActive ? "text-blue-400 font-bold" : ""
+                  }`
+                }
+              >
+                Organizations
+              </NavLink>
+            </li>
+
+            {/* Surveys - Everyone */}
+            <li>
+              <NavLink
+                to="/surveys"
+                className={({ isActive }) =>
+                  `hover:text-blue-400 transition ${
+                    isActive ? "text-blue-400 font-bold" : ""
+                  }`
+                }
+              >
+                Surveys
+              </NavLink>
+            </li>
+
+
+
             {/* Researcher Only */}
             {isResearcher && (
               <li>
