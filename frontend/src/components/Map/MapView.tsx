@@ -259,7 +259,7 @@ const MapView = ({
 
         {/* GIS Feature Panel (Relocated to floating widget) */}
         {!readOnly && features.length > 0 && (
-          <div className="absolute bottom-4 left-4 z-[1000] bg-white/95 backdrop-blur rounded-xl shadow-lg border border-gray-200 p-4 max-w-sm max-h-64 overflow-y-auto">
+          <div className="absolute bottom-3 left-3 right-3 z-[1000] max-h-56 overflow-y-auto rounded-xl border border-gray-200 bg-white/95 p-3 shadow-lg backdrop-blur sm:bottom-4 sm:left-4 sm:right-auto sm:max-h-64 sm:max-w-sm sm:p-4">
             <div className="flex items-center justify-between mb-3">
               <h3 className="font-bold text-gray-800 text-sm">Drawn Features ({features.length})</h3>
               <GeoJSONExport features={features} />

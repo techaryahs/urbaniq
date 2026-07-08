@@ -7,7 +7,7 @@ interface Props {
 const FeatureList = ({ features }: Props) => {
   if (features.length === 0) {
     return (
-      <div className="mt-6 border-2 border-dashed border-gray-300 rounded-xl p-8 text-center">
+      <div className="mt-6 border-2 border-dashed border-gray-300 rounded-xl p-5 sm:p-8 text-center">
         <div className="text-5xl mb-3">🗺️</div>
 
         <h3 className="text-lg font-semibold">No GIS Features</h3>
@@ -27,10 +27,10 @@ const FeatureList = ({ features }: Props) => {
         return (
           <div
             key={index}
-            className="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition"
+            className="bg-white border border-gray-200 rounded-xl p-4 sm:p-5 hover:shadow-md transition"
           >
-            <div className="flex items-center justify-between">
-              <div>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="min-w-0">
                 <h3 className="font-bold text-lg">Feature #{index + 1}</h3>
 
                 <p className="text-gray-500 mt-1">
@@ -43,7 +43,7 @@ const FeatureList = ({ features }: Props) => {
               </span>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 mt-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
               <div className="bg-gray-50 rounded-lg p-3">
                 <p className="text-xs uppercase text-gray-500">Geometry Type</p>
 
@@ -61,7 +61,7 @@ const FeatureList = ({ features }: Props) => {
               </div>
             </div>
 
-            <div className="flex justify-end gap-3 mt-5">
+            <div className="flex flex-col sm:flex-row sm:justify-end gap-3 mt-5">
               <button className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">
                 View
               </button>

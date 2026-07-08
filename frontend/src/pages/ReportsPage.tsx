@@ -70,24 +70,24 @@ const ReportsPage = () => {
   };
 
   if (loading || !summary) {
-    return <div className="p-8 text-center text-lg">Loading reports...</div>;
+    return <div className="p-4 sm:p-8 text-center text-lg">Loading reports...</div>;
   }
 
   return (
-    <div className="max-w-7xl mx-auto p-8">
-      <div className="flex justify-between items-end mb-8">
+    <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+      <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-end mb-8">
         <div>
-          <h1 className="text-4xl font-bold">GIS Reports</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold">GIS Reports</h1>
           <p className="text-gray-500 mt-2">
             Generate and download spatial analysis reports
           </p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="col-span-2 flex flex-col gap-8">
-          <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-8">
-            <h2 className="text-2xl font-bold mb-6">Generate New Report</h2>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="lg:col-span-2 flex flex-col gap-6 lg:gap-8 min-w-0">
+          <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-4 sm:p-8">
+            <h2 className="text-xl sm:text-2xl font-bold mb-6">Generate New Report</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <button
@@ -119,7 +119,7 @@ const ReportsPage = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-8">
+          <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-4 sm:p-8">
             <h2 className="text-xl font-bold mb-4">Spatial Summary</h2>
 
             <p className="text-gray-600 leading-8">{summary.summary}</p>
@@ -127,7 +127,7 @@ const ReportsPage = () => {
         </div>
 
         <div>
-          <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
+          <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-4 sm:p-6">
             <h3 className="text-lg font-bold mb-5">Download History</h3>
 
             <ul className="space-y-4">
@@ -140,10 +140,10 @@ const ReportsPage = () => {
               {reports.map((report) => (
                 <li
                   key={report.id}
-                  className="flex items-center justify-between border-b pb-3"
+                  className="flex items-center justify-between gap-3 border-b pb-3"
                 >
-                  <div>
-                    <p className="font-medium text-sm">{report.filename}</p>
+                  <div className="min-w-0">
+                    <p className="break-words font-medium text-sm">{report.filename}</p>
 
                     <p className="text-xs text-gray-500">
                       {report.format} •{" "}

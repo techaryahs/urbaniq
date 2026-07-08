@@ -53,7 +53,7 @@ const ParkInfo = ({ park, onClear, onCreateSurvey }: Props) => {
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-150 p-6 shadow-md flex flex-col gap-5 max-h-[80vh] overflow-y-auto animate-in fade-in duration-205">
+    <div className="bg-white rounded-2xl border border-gray-150 p-4 sm:p-6 shadow-md flex flex-col gap-5 lg:max-h-[80vh] overflow-y-auto animate-in fade-in duration-205">
       {/* Header */}
       <div className="flex justify-between items-start gap-2 border-b border-gray-100 pb-4">
         <div>
@@ -70,7 +70,7 @@ const ParkInfo = ({ park, onClear, onCreateSurvey }: Props) => {
       </div>
 
       {/* Basic details */}
-      <div className="grid grid-cols-2 gap-3 text-sm">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-3 text-sm">
         <div className="bg-slate-50 rounded-xl p-3">
           <span className="text-xs text-gray-400 font-bold block uppercase mb-1">Space Type</span>
           <span className="font-bold text-slate-805 text-sm uppercase">
@@ -91,7 +91,7 @@ const ParkInfo = ({ park, onClear, onCreateSurvey }: Props) => {
           </span>
         </div>
 
-        <div className="bg-slate-50 rounded-xl p-3 col-span-2 flex justify-between items-center">
+        <div className="bg-slate-50 rounded-xl p-3 sm:col-span-2 lg:col-span-1 xl:col-span-2 flex justify-between items-center">
           <span className="text-xs text-gray-450 font-bold uppercase">Quality Score</span>
           <span className="font-bold text-gray-900 text-base">
             {park.survey_score !== undefined && park.survey_score > 0 
@@ -101,7 +101,7 @@ const ParkInfo = ({ park, onClear, onCreateSurvey }: Props) => {
         </div>
 
         {park.organization && (
-          <div className="bg-slate-50 rounded-xl p-3 col-span-2 flex items-center gap-2">
+          <div className="bg-slate-50 rounded-xl p-3 sm:col-span-2 lg:col-span-1 xl:col-span-2 flex items-center gap-2">
             <Building className="w-4 h-4 text-slate-400 shrink-0" />
             <div>
               <span className="text-[10px] text-gray-400 font-bold block uppercase">Organization</span>
@@ -111,7 +111,7 @@ const ParkInfo = ({ park, onClear, onCreateSurvey }: Props) => {
         )}
 
         {park.area !== undefined && (
-          <div className="bg-slate-55 rounded-xl p-3 col-span-2 flex items-center gap-2">
+          <div className="bg-slate-55 rounded-xl p-3 sm:col-span-2 lg:col-span-1 xl:col-span-2 flex items-center gap-2">
             <Layers className="w-4 h-4 text-slate-400 shrink-0" />
             <div>
               <span className="text-[10px] text-gray-400 font-bold block uppercase">Land Area</span>

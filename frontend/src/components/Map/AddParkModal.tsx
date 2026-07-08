@@ -23,7 +23,7 @@ const AddParkModal = ({ latitude, longitude, onSave, onClose }: Props) => {
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[9999] animate-in fade-in duration-200">
-      <div className="bg-white rounded-3xl p-6 w-96 shadow-2xl border border-gray-100 animate-in zoom-in duration-200">
+      <div className="bg-white rounded-3xl p-5 sm:p-6 w-full max-w-sm shadow-2xl border border-gray-100 animate-in zoom-in duration-200">
         <h2 className="text-2xl font-bold mb-5 bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Add Public Space</h2>
 
         <div className="space-y-4">

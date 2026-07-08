@@ -103,9 +103,9 @@ const AddSurveyModal = ({ parkId, parkName, onClose, onSave }: Props) => {
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9999] flex items-center justify-center p-4">
       <div className="bg-white rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden border border-gray-100 animate-in fade-in zoom-in duration-200 max-h-[90vh] overflow-y-auto">
-        <div className="flex justify-between items-center p-6 border-b border-gray-100 bg-gray-50">
-          <div>
-            <h2 className="text-xl font-bold flex items-center gap-2 text-gray-800">
+        <div className="flex justify-between items-center gap-3 p-4 sm:p-6 border-b border-gray-100 bg-gray-50">
+          <div className="min-w-0">
+            <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2 text-gray-800">
               <Plus className="w-5 h-5 text-blue-500" />
               Add Inspection Survey
             </h2>
@@ -115,7 +115,7 @@ const AddSurveyModal = ({ parkId, parkName, onClose, onSave }: Props) => {
             <X className="w-6 h-6" />
           </button>
         </div>
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4">
           {formError && (
             <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg flex items-center gap-2">
               <AlertTriangle className="w-4 h-4 shrink-0" />
@@ -123,7 +123,7 @@ const AddSurveyModal = ({ parkId, parkName, onClose, onSave }: Props) => {
             </div>
           )}
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-bold text-gray-600 uppercase mb-1">Condition *</label>
               <select
@@ -185,7 +185,7 @@ const AddSurveyModal = ({ parkId, parkName, onClose, onSave }: Props) => {
             />
 
             {/* Previews */}
-            <div className="grid grid-cols-5 gap-2 mt-3">
+            <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 mt-3">
               {photoPreviews.map((p, idx) => (
                 <div key={idx} className="relative aspect-square border rounded-xl overflow-hidden group">
                   <img src={p} alt="Preview" className="w-full h-full object-cover" />
@@ -201,7 +201,7 @@ const AddSurveyModal = ({ parkId, parkName, onClose, onSave }: Props) => {
             </div>
           </div>
 
-          <div className="flex justify-end gap-3 pt-4 border-t border-gray-150">
+          <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-3 pt-4 border-t border-gray-150">
             <button
               type="button"
               onClick={onClose}

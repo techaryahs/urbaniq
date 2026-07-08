@@ -40,11 +40,11 @@ const AnalyticsPage = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto p-8 space-y-8">
+    <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8">
       {/* Header */}
 
       <div>
-        <h1 className="text-4xl font-bold text-gray-900">
+        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">
           GIS Analytics Dashboard
         </h1>
 
@@ -55,7 +55,7 @@ const AnalyticsPage = () => {
 
       {/* KPI Cards */}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 sm:gap-6">
         <StatCard
           title="Total Public Spaces"
           value={summary.total_public_spaces || summary.total_parks}
@@ -83,43 +83,43 @@ const AnalyticsPage = () => {
 
       {/* Charts */}
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-4 sm:p-6 min-w-0">
           <h3 className="text-xl font-semibold mb-5 text-center">
             Public Space Condition Distribution
           </h3>
 
-          <div className="h-80">
+          <div className="h-64 sm:h-80">
             <ConditionPieChart />
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-4 sm:p-6 min-w-0">
           <h3 className="text-xl font-semibold mb-5 text-center">
             Public Spaces by Organization
           </h3>
 
-          <div className="h-80">
+          <div className="h-64 sm:h-80">
             <OrganizationBarChart />
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-4 sm:p-6 min-w-0">
           <h3 className="text-xl font-semibold mb-5 text-center">
             Citizen Survey Trends
           </h3>
 
-          <div className="h-80">
+          <div className="h-64 sm:h-80">
             <SurveyLineChart />
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-4 sm:p-6 min-w-0">
           <h3 className="text-xl font-semibold mb-5 text-center">
             Buffer Analysis Overview
           </h3>
 
-          <div className="h-80">
+          <div className="h-64 sm:h-80">
             <BufferChart />
           </div>
         </div>

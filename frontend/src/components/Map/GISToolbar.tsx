@@ -17,7 +17,7 @@ const GISToolbar = ({ activeTool, onToolChange }: Props) => {
 
   return (
     <div
-      className="absolute top-4 left-1/2 transform -translate-x-1/2 z-[1000] bg-white rounded-full shadow-lg border border-gray-200 p-1.5 flex gap-1"
+      className="absolute left-2 right-2 top-3 z-[1000] flex flex-wrap justify-center gap-1 rounded-2xl border border-gray-200 bg-white p-1.5 shadow-lg sm:left-1/2 sm:right-auto sm:top-4 sm:-translate-x-1/2 sm:flex-nowrap sm:rounded-full"
     >
       {tools.map((tool) => {
         const isActive = activeTool === tool.id;
@@ -25,14 +25,14 @@ const GISToolbar = ({ activeTool, onToolChange }: Props) => {
           <button
             key={tool.id}
             onClick={() => onToolChange(tool.id)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all duration-200 ${
+            className={`flex items-center gap-1.5 rounded-full px-3 py-2 text-xs font-medium transition-all duration-200 sm:gap-2 sm:px-4 sm:text-sm ${
               isActive
                 ? "bg-blue-600 text-white shadow-md"
                 : "bg-transparent text-gray-600 hover:bg-gray-100"
             }`}
           >
             {tool.icon}
-            <span>{tool.label}</span>
+            <span className="hidden min-[420px]:inline">{tool.label}</span>
           </button>
         );
       })}

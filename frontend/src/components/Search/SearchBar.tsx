@@ -5,13 +5,13 @@ interface Props {
 
 const SearchBar = ({ searchTerm, setSearchTerm }: Props) => {
   return (
-    <div className="mb-6">
+    <div>
       <input
         type="text"
         placeholder="🔍 Search parks..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className="w-full rounded-xl border border-gray-300 px-4 py-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+        className="h-14 w-full rounded-xl border border-gray-300 px-4 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500"
       />
     </div>
   );

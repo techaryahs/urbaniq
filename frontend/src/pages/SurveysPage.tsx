@@ -315,11 +315,11 @@ const SurveysPage = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto p-8 animate-in fade-in duration-300">
+    <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 animate-in fade-in duration-300">
       {/* Header */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
         <div>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
             System Surveys
           </h1>
           <p className="text-gray-500 mt-2">Manage public space surveys, quality indicators, and photo documentation</p>
@@ -327,7 +327,7 @@ const SurveysPage = () => {
         
         <button 
           onClick={handleOpenAdd}
-          className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all flex items-center gap-2"
+          className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all flex items-center justify-center gap-2"
         >
           <Plus className="w-5 h-5" />
           Create Survey
@@ -335,11 +335,11 @@ const SurveysPage = () => {
       </div>
 
       {/* Export Toolbar */}
-      <div className="flex justify-end gap-3 mb-6">
+      <div className="flex flex-col sm:flex-row sm:justify-end gap-3 mb-6">
         <button
           onClick={() => handleExport("pdf")}
           disabled={exporting !== null}
-          className="flex items-center gap-2 border border-gray-200 text-sm font-semibold bg-white hover:bg-gray-50 px-4 py-2.5 rounded-xl transition-all disabled:opacity-50"
+          className="flex items-center justify-center gap-2 border border-gray-200 text-sm font-semibold bg-white hover:bg-gray-50 px-4 py-2.5 rounded-xl transition-all disabled:opacity-50"
         >
           {exporting === "pdf" ? <Loader2 className="w-4 h-4 animate-spin" /> : <FileDown className="w-4 h-4 text-red-500" />}
           PDF Report
@@ -347,7 +347,7 @@ const SurveysPage = () => {
         <button
           onClick={() => handleExport("excel")}
           disabled={exporting !== null}
-          className="flex items-center gap-2 border border-gray-200 text-sm font-semibold bg-white hover:bg-gray-50 px-4 py-2.5 rounded-xl transition-all disabled:opacity-50"
+          className="flex items-center justify-center gap-2 border border-gray-200 text-sm font-semibold bg-white hover:bg-gray-50 px-4 py-2.5 rounded-xl transition-all disabled:opacity-50"
         >
           {exporting === "excel" ? <Loader2 className="w-4 h-4 animate-spin" /> : <FileDown className="w-4 h-4 text-green-500" />}
           Excel Sheet
@@ -355,7 +355,7 @@ const SurveysPage = () => {
         <button
           onClick={() => handleExport("csv")}
           disabled={exporting !== null}
-          className="flex items-center gap-2 border border-gray-200 text-sm font-semibold bg-white hover:bg-gray-50 px-4 py-2.5 rounded-xl transition-all disabled:opacity-50"
+          className="flex items-center justify-center gap-2 border border-gray-200 text-sm font-semibold bg-white hover:bg-gray-50 px-4 py-2.5 rounded-xl transition-all disabled:opacity-50"
         >
           {exporting === "csv" ? <Loader2 className="w-4 h-4 animate-spin" /> : <FileDown className="w-4 h-4 text-blue-500" />}
           CSV Dump
@@ -363,7 +363,7 @@ const SurveysPage = () => {
       </div>
 
       {/* Filtering Toolbar */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-5 mb-6 shadow-sm grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+      <div className="bg-white rounded-2xl border border-gray-100 p-4 sm:p-5 mb-6 shadow-sm grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 items-end">
         <div>
           <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Filter by Public Space</label>
           <select
@@ -398,7 +398,7 @@ const SurveysPage = () => {
           </select>
         </div>
 
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           <div>
             <label className="block text-xs font-bold text-gray-500 uppercase mb-2">Min Score</label>
             <input
@@ -446,7 +446,7 @@ const SurveysPage = () => {
       </div>
 
       {/* Surveys List Table */}
-      <div className="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
+      <div className="bg-white rounded-2xl sm:rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
         {loading ? (
           <div className="flex flex-col items-center justify-center p-20">
             <Loader2 className="w-10 h-10 text-blue-500 animate-spin mb-4" />
@@ -531,7 +531,7 @@ const SurveysPage = () => {
 
         {/* Pager */}
         {!loading && surveys.length > 0 && (
-          <div className="flex items-center justify-between border-t border-gray-100 p-4 pl-6 pr-6 bg-gray-50 text-sm">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-t border-gray-100 p-4 sm:pl-6 sm:pr-6 bg-gray-50 text-sm">
             <button
               onClick={() => setPage(Math.max(1, page - 1))}
               disabled={page === 1}
@@ -559,8 +559,8 @@ const SurveysPage = () => {
       {activeModal === "add" && (
         <div className="fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden border border-gray-100 animate-in fade-in zoom-in duration-200 max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center p-6 border-b border-gray-100 bg-gray-50">
-              <h2 className="text-xl font-bold flex items-center gap-2 text-gray-800">
+            <div className="flex justify-between items-center gap-3 p-4 sm:p-6 border-b border-gray-100 bg-gray-50">
+              <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2 text-gray-800">
                 <Plus className="w-5 h-5 text-blue-500" />
                 Add Inspection Survey
               </h2>
@@ -568,7 +568,7 @@ const SurveysPage = () => {
                 <X className="w-6 h-6" />
               </button>
             </div>
-            <form onSubmit={handleAddSubmit} className="p-6 space-y-4">
+            <form onSubmit={handleAddSubmit} className="p-4 sm:p-6 space-y-4">
               {formError && (
                 <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg flex items-center gap-2">
                   <AlertTriangle className="w-4 h-4 shrink-0" />
@@ -591,7 +591,7 @@ const SurveysPage = () => {
                 </select>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-gray-600 uppercase mb-1">Condition *</label>
                   <select
@@ -653,7 +653,7 @@ const SurveysPage = () => {
                 />
 
                 {/* Previews */}
-                <div className="grid grid-cols-5 gap-2 mt-3">
+                <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 mt-3">
                   {photoPreviews.map((p, idx) => (
                     <div key={idx} className="relative aspect-square border rounded-xl overflow-hidden group">
                       <img src={p} alt="Preview" className="w-full h-full object-cover" />
@@ -669,7 +669,7 @@ const SurveysPage = () => {
                 </div>
               </div>
 
-              <div className="flex justify-end gap-3 pt-4 border-t border-gray-150">
+              <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-3 pt-4 border-t border-gray-150">
                 <button
                   type="button"
                   onClick={() => setActiveModal(null)}
@@ -695,8 +695,8 @@ const SurveysPage = () => {
       {activeModal === "edit" && selectedSurvey && (
         <div className="fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden border border-gray-100 animate-in fade-in zoom-in duration-200 max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center p-6 border-b border-gray-100 bg-gray-50">
-              <h2 className="text-xl font-bold flex items-center gap-2 text-gray-800">
+            <div className="flex justify-between items-center gap-3 p-4 sm:p-6 border-b border-gray-100 bg-gray-50">
+              <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2 text-gray-800">
                 <Edit2 className="w-5 h-5 text-indigo-500" />
                 Edit Inspection Survey
               </h2>
@@ -704,7 +704,7 @@ const SurveysPage = () => {
                 <X className="w-6 h-6" />
               </button>
             </div>
-            <form onSubmit={handleEditSubmit} className="p-6 space-y-4">
+            <form onSubmit={handleEditSubmit} className="p-4 sm:p-6 space-y-4">
               {formError && (
                 <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg flex items-center gap-2">
                   <AlertTriangle className="w-4 h-4 shrink-0" />
@@ -726,7 +726,7 @@ const SurveysPage = () => {
                 </select>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-bold text-gray-600 uppercase mb-1">Condition *</label>
                   <select
@@ -782,7 +782,7 @@ const SurveysPage = () => {
                 
                 {/* Existing pics */}
                 {existingPhotos.length > 0 && (
-                  <div className="grid grid-cols-5 gap-2 mb-3 bg-gray-50 p-2 rounded-xl border border-dashed">
+                  <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 mb-3 bg-gray-50 p-2 rounded-xl border border-dashed">
                     {existingPhotos.map((photo, idx) => (
                       <div key={idx} className="relative aspect-square border rounded-xl overflow-hidden group">
                         <img 
@@ -815,7 +815,7 @@ const SurveysPage = () => {
 
                 {/* Previews */}
                 {photoPreviews.length > 0 && (
-                  <div className="grid grid-cols-5 gap-2 mt-3">
+                  <div className="grid grid-cols-3 sm:grid-cols-5 gap-2 mt-3">
                     {photoPreviews.map((p, idx) => (
                       <div key={idx} className="relative aspect-square border rounded-xl overflow-hidden group">
                         <img src={p} alt="Preview" className="w-full h-full object-cover" />
@@ -832,7 +832,7 @@ const SurveysPage = () => {
                 )}
               </div>
 
-              <div className="flex justify-end gap-3 pt-4 border-t border-gray-150">
+              <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-3 pt-4 border-t border-gray-150">
                 <button
                   type="button"
                   onClick={() => setActiveModal(null)}
@@ -857,10 +857,10 @@ const SurveysPage = () => {
       {/* DETAILS VIEW MODAL */}
       {activeModal === "details" && selectedSurvey && (
         <div className="fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl w-full max-w-2xl shadow-2xl overflow-hidden border border-gray-100 animate-in fade-in zoom-in duration-200">
-            <div className="flex justify-between items-center p-6 border-b border-gray-100 bg-gray-50">
+          <div className="bg-white rounded-3xl w-full max-w-2xl max-h-[90vh] shadow-2xl overflow-y-auto border border-gray-100 animate-in fade-in zoom-in duration-200">
+            <div className="flex justify-between items-center gap-3 p-4 sm:p-6 border-b border-gray-100 bg-gray-50">
               <div>
-                <h2 className="text-xl font-bold text-gray-800">Survey Details</h2>
+                <h2 className="text-lg sm:text-xl font-bold text-gray-800">Survey Details</h2>
                 <p className="text-xs text-gray-400 mt-1">Inspection survey ID: #{selectedSurvey.id}</p>
               </div>
               <button onClick={() => setActiveModal(null)} className="text-gray-400 hover:text-gray-650 transition-colors">
@@ -868,8 +868,8 @@ const SurveysPage = () => {
               </button>
             </div>
             
-            <div className="p-6 space-y-6">
-              <div className="grid grid-cols-2 gap-4">
+            <div className="p-4 sm:p-6 space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-gray-50 p-4 rounded-xl">
                   <p className="text-xs text-gray-400 font-bold uppercase font-semibold">Public Space</p>
                   <p className="text-lg font-bold text-gray-800 mt-1">{getParkName(selectedSurvey.park_id)}</p>
@@ -880,7 +880,7 @@ const SurveysPage = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-gray-50 p-4 rounded-xl">
                   <p className="text-xs text-gray-400 font-bold uppercase font-semibold">Condition</p>
                   <span className={`inline-block px-3 py-1 mt-2 text-xs font-bold rounded-full ${
@@ -909,7 +909,7 @@ const SurveysPage = () => {
               <div>
                 <p className="text-xs text-gray-400 font-bold uppercase font-semibold mb-3">Photo Documentation</p>
                 {selectedSurvey.photos && selectedSurvey.photos.length > 0 ? (
-                  <div className="grid grid-cols-5 gap-2">
+                  <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                     {selectedSurvey.photos.map((photo, idx) => (
                       <a 
                         key={idx} 
@@ -952,7 +952,7 @@ const SurveysPage = () => {
       {activeModal === "delete" && selectedSurvey && (
         <div className="fixed inset-0 bg-black/55 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl w-full max-w-sm shadow-2xl overflow-hidden border border-gray-100 animate-in fade-in zoom-in duration-200">
-            <div className="p-6 flex flex-col items-center text-center">
+            <div className="p-4 sm:p-6 flex flex-col items-center text-center">
               <div className="w-14 h-14 bg-red-50 text-red-500 rounded-full flex items-center justify-center mb-4">
                 <Trash2 className="w-6 h-6" />
               </div>
@@ -962,7 +962,7 @@ const SurveysPage = () => {
                 This action is destructive and will recalculate the public space average survey score.
               </p>
               
-              <div className="flex gap-3 w-full animate-up">
+              <div className="flex flex-col-reverse sm:flex-row gap-3 w-full animate-up">
                 <button
                   type="button"
                   onClick={() => setActiveModal(null)}

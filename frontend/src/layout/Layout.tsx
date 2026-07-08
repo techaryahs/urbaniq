@@ -14,7 +14,7 @@ const Layout = ({ children }: LayoutProps) => {
     <>
       {!isLoginPage && <Navbar />}
 
-      <main className="bg-slate-100 min-h-screen">{children}</main>
+      <main className="bg-slate-100 min-h-screen overflow-x-hidden">{children}</main>
     </>
   );
 };

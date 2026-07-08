@@ -24,9 +24,9 @@ const MiniMap = () => {
   }, []);
 
   return (
-    <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 flex flex-col h-full">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold flex items-center gap-2">
+    <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-4 sm:p-6 flex flex-col h-full">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-4">
+        <h2 className="text-lg sm:text-xl font-bold flex items-center gap-2">
           <Map className="w-5 h-5 text-blue-600" />
           Network Status
         </h2>
@@ -39,7 +39,7 @@ const MiniMap = () => {
         </Link>
       </div>
       
-      <div className="flex-1 w-full min-h-[300px] rounded-lg overflow-hidden border border-gray-200">
+      <div className="flex-1 w-full min-h-[260px] sm:min-h-[300px] rounded-lg overflow-hidden border border-gray-200">
         {loading ? (
           <div className="w-full h-full bg-gray-50 flex items-center justify-center text-gray-500">
             Loading map data...

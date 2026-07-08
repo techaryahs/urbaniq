@@ -72,15 +72,15 @@ const Login = () => {
 
       {/* RIGHT PANEL */}
 
-      <div className="flex-1 flex items-center justify-center bg-gray-100 px-6">
-        <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md p-10">
+      <div className="flex-1 flex items-center justify-center bg-gray-100 px-4 py-8 sm:px-6">
+        <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md p-6 sm:p-10">
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-800">Welcome Back</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-800">Welcome Back</h2>
 
             <p className="text-gray-500 mt-2">Login to continue</p>
           </div>
 
-          <form className="mt-10 space-y-6" onSubmit={handleSubmit}>
+          <form className="mt-8 sm:mt-10 space-y-6" onSubmit={handleSubmit}>
             <div>
               <label className="block mb-2 text-gray-700">Email</label>
 

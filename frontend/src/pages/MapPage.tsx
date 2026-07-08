@@ -81,8 +81,8 @@ const MapPage = () => {
 
   if (loading) {
     return (
-      <div className="h-[80vh] flex items-center justify-center">
-        <h2 className="text-2xl font-semibold text-gray-600">Loading Parks...</h2>
+      <div className="min-h-[60vh] flex items-center justify-center p-4">
+        <h2 className="text-xl sm:text-2xl font-semibold text-gray-600">Loading Parks...</h2>
       </div>
     );
   }
@@ -114,27 +114,29 @@ const MapPage = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto p-8">
-      <div className="flex justify-between items-end mb-6">
+    <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+      <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-end mb-6">
         <div>
-          <h1 className="text-4xl font-bold">GIS Workspace</h1>
+          <h1 className="text-3xl sm:text-4xl font-bold">GIS Workspace</h1>
           <p className="text-gray-500 mt-2">Professional mapping and spatial analysis</p>
         </div>
       </div>
 
       {/* Search & Filter */}
-      <div className="grid grid-cols-4 gap-4 mb-6">
-        <div className="col-span-3">
+      <div className="flex flex-col gap-4 mb-6 md:flex-row md:items-start">
+        <div className="min-w-0 flex-1">
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </div>
-        <FilterBar condition={condition} setCondition={setCondition} />
+        <div className="w-full md:w-64 lg:w-72">
+          <FilterBar condition={condition} setCondition={setCondition} />
+        </div>
       </div>
 
       {/* Main Content Layout */}
       <div className="flex flex-col lg:flex-row gap-6 mt-6">
         
         {/* Left: Map */}
-        <div className="w-full lg:w-3/4 relative min-h-[700px] h-[80vh]">
+        <div className="w-full lg:w-3/4 relative min-h-[420px] h-[65vh] lg:min-h-[700px] lg:h-[80vh]">
           <GISToolbar activeTool={activeTool} onToolChange={handleToolChange} />
           <MapView
             parks={parks}
@@ -159,7 +161,7 @@ const MapPage = () => {
         </div>
 
         {/* Right: Sidebar */}
-        <div className="w-full lg:w-1/4 flex flex-col gap-6 overflow-y-auto max-h-[80vh] pr-2">
+        <div className="w-full lg:w-1/4 flex flex-col gap-6 lg:overflow-y-auto lg:max-h-[80vh] lg:pr-2">
           {selectedPark ? (
             <ParkInfo
               park={selectedPark}

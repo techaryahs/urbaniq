@@ -45,17 +45,17 @@ const Dashboard = () => {
   if (isResearcher) {
     if (!researcherStats) {
       return (
-        <div className="max-w-7xl mx-auto p-8 text-center text-red-500">
+        <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 text-center text-red-500">
           Failed to load researcher dashboard statistics.
         </div>
       );
     }
 
     return (
-      <div className="max-w-7xl mx-auto p-8 animate-in fade-in duration-300">
-        <div className="flex justify-between items-end mb-6">
+      <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 animate-in fade-in duration-300">
+        <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-end mb-6">
           <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               Researcher Dashboard
             </h1>
             <p className="text-gray-500 mt-2">Welcome back, {user?.full_name}</p>
@@ -63,7 +63,7 @@ const Dashboard = () => {
         </div>
 
         {/* Top: Statistics Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 mt-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 mt-6">
           <StatCard title="Total Public Spaces" value={researcherStats.total_public_spaces || 0} icon="parks" />
           <StatCard title="Total Surveys" value={researcherStats.total_surveys} icon="survey" />
           <StatCard title="Today's Surveys" value={researcherStats.todays_surveys} icon="fair" />
@@ -73,12 +73,12 @@ const Dashboard = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
           {/* Left: Quick Analytics & Map Preview */}
-          <div className="col-span-2 flex flex-col gap-6">
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+          <div className="lg:col-span-2 flex flex-col gap-6 min-w-0">
+            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-4 sm:p-6">
               <h2 className="text-xl font-bold text-gray-800 mb-4">Latest Survey Submitted</h2>
               {researcherStats.latest_survey ? (
                 <div className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="bg-gray-50 p-4 rounded-xl">
                       <p className="text-xs text-gray-400 font-semibold uppercase">Public Space Name</p>
                       <p className="text-lg font-bold text-gray-850 mt-1">{researcherStats.latest_survey.public_space_name || researcherStats.latest_survey.park_name}</p>
@@ -90,7 +90,7 @@ const Dashboard = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="bg-gray-50 p-4 rounded-xl">
                       <p className="text-xs text-gray-400 font-semibold uppercase">Assigned Score</p>
                       <p className="text-lg font-bold text-yellow-600 mt-1">{researcherStats.latest_survey.score} / 10</p>
@@ -132,10 +132,10 @@ const Dashboard = () => {
   if (!stats) return null;
 
   return (
-    <div className="max-w-7xl mx-auto p-8 animate-in fade-in duration-305">
-      <div className="flex justify-between items-end mb-6">
+    <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 animate-in fade-in duration-305">
+      <div className="flex flex-col gap-4 sm:flex-row sm:justify-between sm:items-end mb-6">
         <div>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
             Executive Overview
           </h1>
           <p className="text-gray-500 mt-2">UrbanIQ Intelligence Platform Dashboard</p>
@@ -143,7 +143,7 @@ const Dashboard = () => {
       </div>
 
       {/* Top: Statistics Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-6">
         <StatCard title="Total Public Spaces" value={stats.total_public_spaces || stats.total_parks} icon="parks" />
         <StatCard title="Good Condition" value={stats.good_condition} icon="good" />
         <StatCard title="Fair Condition" value={stats.fair_condition} icon="fair" />
@@ -152,11 +152,11 @@ const Dashboard = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
         {/* Left: Quick Analytics & Map Preview */}
-        <div className="col-span-2 flex flex-col gap-6">
+        <div className="lg:col-span-2 flex flex-col gap-6 min-w-0">
           <MiniMap />
           
-          <div className="grid grid-cols-2 gap-6">
-            <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-4 sm:p-6">
               <h2 className="text-lg font-bold mb-2 text-gray-800">Latest Alerts</h2>
               <ul className="text-sm space-y-3 text-gray-600">
                 <li className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-red-500"></span> Central Park requires maintenance</li>
@@ -164,7 +164,7 @@ const Dashboard = () => {
                 <li className="flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-blue-500"></span> New inspection uploaded</li>
               </ul>
             </div>
-            <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
+            <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-4 sm:p-6">
               <h2 className="text-lg font-bold mb-2 text-gray-800">Recent Uploads</h2>
               <ul className="text-sm space-y-3 text-gray-600">
                 <li>geojson_parks_2023.zip</li>

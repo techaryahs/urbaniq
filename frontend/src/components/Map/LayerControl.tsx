@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Layers, Map as MapIcon, ChevronDown, ChevronUp, Info } from "lucide-react";
+import { Layers, Map as MapIcon, ChevronDown, ChevronUp, Info, X } from "lucide-react";
 import { BASEMAPS } from "../../utils/mapLayers";
 import type { BasemapKey } from "../../utils/mapLayers";
 import MapLegend from "./MapLegend";
@@ -19,7 +19,8 @@ const LayerControl = ({
   selectedBasemap,
   onBasemapChange,
 }: Props) => {
-  const [expandedSection, setExpandedSection] = useState<"basemap" | "layers" | "legend" | null>("layers");
+  const [isOpen, setIsOpen] = useState(false);
+  const [expandedSection, setExpandedSection] = useState<"basemap" | "layers" | "legend" | null>(null);
 
   const layers: { id: LayerKey; label: string }[] = [
     { id: "parks", label: "Parks" },
@@ -34,7 +35,35 @@ const LayerControl = ({
   };
 
   return (
-    <div className="absolute top-4 right-4 z-[1000] bg-white/95 backdrop-blur rounded-xl shadow-lg border border-gray-200 w-64 overflow-hidden">
+    <div className="absolute right-2 top-24 z-[1000] sm:right-4 lg:top-4">
+      {!isOpen && (
+        <button
+          type="button"
+          onClick={() => setIsOpen(true)}
+          className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white/95 px-4 py-3 text-sm font-bold text-gray-700 shadow-lg backdrop-blur transition hover:bg-gray-50"
+        >
+          <Layers className="h-5 w-5 text-blue-600" />
+          Map Options
+          <ChevronDown className="h-4 w-4 text-gray-400" />
+        </button>
+      )}
+
+      {isOpen && (
+        <div className="max-h-[calc(100vh-9rem)] w-[min(16rem,calc(100vw-1rem))] overflow-y-auto rounded-xl border border-gray-200 bg-white/95 shadow-lg backdrop-blur sm:max-h-[calc(100vh-7rem)] sm:w-64">
+          <div className="flex items-center justify-between border-b border-gray-100 px-4 py-3">
+            <div className="flex items-center gap-2 text-sm font-bold text-gray-700">
+              <Layers className="h-4 w-4 text-blue-600" />
+              Map Options
+            </div>
+            <button
+              type="button"
+              onClick={() => setIsOpen(false)}
+              className="rounded-lg p-1 text-gray-400 transition hover:bg-gray-100 hover:text-gray-600"
+              aria-label="Close map options"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
       
       {/* Basemap Section */}
       <div className="border-b border-gray-100 last:border-0">
@@ -118,6 +147,8 @@ const LayerControl = ({
         )}
       </div>
 
+        </div>
+      )}
     </div>
   );
 };
