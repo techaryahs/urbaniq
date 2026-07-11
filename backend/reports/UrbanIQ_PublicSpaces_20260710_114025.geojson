@@ -1,0 +1,1164 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.886066,
+          19.047501
+        ]
+      },
+      "properties": {
+        "id": 1,
+        "name": "Mumbai Park 1",
+        "type": "PARK",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.856072,
+          19.05215
+        ]
+      },
+      "properties": {
+        "id": 2,
+        "name": "Mumbai Lake 2",
+        "type": "LAKE",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.849488,
+          19.059118
+        ]
+      },
+      "properties": {
+        "id": 3,
+        "name": "Mumbai School 3",
+        "type": "SCHOOL",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.886693,
+          19.078696
+        ]
+      },
+      "properties": {
+        "id": 4,
+        "name": "Mumbai Garden 4",
+        "type": "GARDEN",
+        "area": null,
+        "condition": "Good",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.864391,
+          19.098158
+        ]
+      },
+      "properties": {
+        "id": 5,
+        "name": "Mumbai Playground 5",
+        "type": "PLAYGROUND",
+        "area": null,
+        "condition": "Good",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.864372,
+          19.058919
+        ]
+      },
+      "properties": {
+        "id": 6,
+        "name": "Mumbai Open Space 6",
+        "type": "OPEN_SPACE",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.201796,
+          28.605439
+        ]
+      },
+      "properties": {
+        "id": 7,
+        "name": "Delhi Park 7",
+        "type": "PARK",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.222784,
+          28.616074
+        ]
+      },
+      "properties": {
+        "id": 8,
+        "name": "Delhi Lake 8",
+        "type": "LAKE",
+        "area": null,
+        "condition": "Poor",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.196591,
+          28.621618
+        ]
+      },
+      "properties": {
+        "id": 9,
+        "name": "Delhi School 9",
+        "type": "SCHOOL",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.183173,
+          28.623576
+        ]
+      },
+      "properties": {
+        "id": 10,
+        "name": "Delhi Garden 10",
+        "type": "GARDEN",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.230989,
+          28.606708
+        ]
+      },
+      "properties": {
+        "id": 11,
+        "name": "Delhi Playground 11",
+        "type": "PLAYGROUND",
+        "area": null,
+        "condition": "Poor",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.201211,
+          28.59647
+        ]
+      },
+      "properties": {
+        "id": 12,
+        "name": "Delhi Open Space 12",
+        "type": "OPEN_SPACE",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.602699,
+          12.973648
+        ]
+      },
+      "properties": {
+        "id": 13,
+        "name": "Bengaluru Park 13",
+        "type": "PARK",
+        "area": null,
+        "condition": "Good",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.587367,
+          13.000971
+        ]
+      },
+      "properties": {
+        "id": 14,
+        "name": "Bengaluru Lake 14",
+        "type": "LAKE",
+        "area": null,
+        "condition": "Good",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.578343,
+          12.943526
+        ]
+      },
+      "properties": {
+        "id": 15,
+        "name": "Bengaluru School 15",
+        "type": "SCHOOL",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.568571,
+          12.996388
+        ]
+      },
+      "properties": {
+        "id": 16,
+        "name": "Bengaluru Garden 16",
+        "type": "GARDEN",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.594554,
+          12.994681
+        ]
+      },
+      "properties": {
+        "id": 17,
+        "name": "Bengaluru Playground 17",
+        "type": "PLAYGROUND",
+        "area": null,
+        "condition": "Poor",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          77.572978,
+          12.986299
+        ]
+      },
+      "properties": {
+        "id": 18,
+        "name": "Bengaluru Open Space 18",
+        "type": "OPEN_SPACE",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.480664,
+          17.368159
+        ]
+      },
+      "properties": {
+        "id": 19,
+        "name": "Hyderabad Park 19",
+        "type": "PARK",
+        "area": null,
+        "condition": "Good",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.502047,
+          17.406666
+        ]
+      },
+      "properties": {
+        "id": 20,
+        "name": "Hyderabad Lake 20",
+        "type": "LAKE",
+        "area": null,
+        "condition": "Good",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.48203,
+          17.358812
+        ]
+      },
+      "properties": {
+        "id": 21,
+        "name": "Hyderabad School 21",
+        "type": "SCHOOL",
+        "area": null,
+        "condition": "Poor",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.471785,
+          17.388194
+        ]
+      },
+      "properties": {
+        "id": 22,
+        "name": "Hyderabad Garden 22",
+        "type": "GARDEN",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.509787,
+          17.400053
+        ]
+      },
+      "properties": {
+        "id": 23,
+        "name": "Hyderabad Playground 23",
+        "type": "PLAYGROUND",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.482786,
+          17.382223
+        ]
+      },
+      "properties": {
+        "id": 24,
+        "name": "Hyderabad Open Space 24",
+        "type": "OPEN_SPACE",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.881458,
+          18.542631
+        ]
+      },
+      "properties": {
+        "id": 25,
+        "name": "Pune Park 25",
+        "type": "PARK",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.849135,
+          18.500093
+        ]
+      },
+      "properties": {
+        "id": 26,
+        "name": "Pune Lake 26",
+        "type": "LAKE",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.827869,
+          18.546146
+        ]
+      },
+      "properties": {
+        "id": 27,
+        "name": "Pune School 27",
+        "type": "SCHOOL",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.841152,
+          18.524441
+        ]
+      },
+      "properties": {
+        "id": 28,
+        "name": "Pune Garden 28",
+        "type": "GARDEN",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.855859,
+          18.494553
+        ]
+      },
+      "properties": {
+        "id": 29,
+        "name": "Pune Playground 29",
+        "type": "PLAYGROUND",
+        "area": null,
+        "condition": "Good",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.855217,
+          18.523388
+        ]
+      },
+      "properties": {
+        "id": 30,
+        "name": "Pune Open Space 30",
+        "type": "OPEN_SPACE",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.597135,
+          23.037816
+        ]
+      },
+      "properties": {
+        "id": 31,
+        "name": "Ahmedabad Park 31",
+        "type": "PARK",
+        "area": null,
+        "condition": "Good",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.601109,
+          23.031493
+        ]
+      },
+      "properties": {
+        "id": 32,
+        "name": "Ahmedabad Lake 32",
+        "type": "LAKE",
+        "area": null,
+        "condition": "Poor",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.556274,
+          22.996342
+        ]
+      },
+      "properties": {
+        "id": 33,
+        "name": "Ahmedabad School 33",
+        "type": "SCHOOL",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.554613,
+          22.99676
+        ]
+      },
+      "properties": {
+        "id": 34,
+        "name": "Ahmedabad Garden 34",
+        "type": "GARDEN",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.595725,
+          23.044078
+        ]
+      },
+      "properties": {
+        "id": 35,
+        "name": "Ahmedabad Playground 35",
+        "type": "PLAYGROUND",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.581539,
+          23.005354
+        ]
+      },
+      "properties": {
+        "id": 36,
+        "name": "Ahmedabad Open Space 36",
+        "type": "OPEN_SPACE",
+        "area": null,
+        "condition": "Good",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.287777,
+          13.10115
+        ]
+      },
+      "properties": {
+        "id": 37,
+        "name": "Chennai Park 37",
+        "type": "PARK",
+        "area": null,
+        "condition": "Good",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.280239,
+          13.073958
+        ]
+      },
+      "properties": {
+        "id": 38,
+        "name": "Chennai Lake 38",
+        "type": "LAKE",
+        "area": null,
+        "condition": "Poor",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.24395,
+          13.091907
+        ]
+      },
+      "properties": {
+        "id": 39,
+        "name": "Chennai School 39",
+        "type": "SCHOOL",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.284393,
+          13.100736
+        ]
+      },
+      "properties": {
+        "id": 40,
+        "name": "Chennai Garden 40",
+        "type": "GARDEN",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.252113,
+          13.079617
+        ]
+      },
+      "properties": {
+        "id": 41,
+        "name": "Chennai Playground 41",
+        "type": "PLAYGROUND",
+        "area": null,
+        "condition": "Poor",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.268458,
+          13.105169
+        ]
+      },
+      "properties": {
+        "id": 42,
+        "name": "Chennai Open Space 42",
+        "type": "OPEN_SPACE",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.339775,
+          22.581729
+        ]
+      },
+      "properties": {
+        "id": 43,
+        "name": "Kolkata Park 43",
+        "type": "PARK",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.343879,
+          22.571738
+        ]
+      },
+      "properties": {
+        "id": 44,
+        "name": "Kolkata Lake 44",
+        "type": "LAKE",
+        "area": null,
+        "condition": "Good",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.343778,
+          22.542729
+        ]
+      },
+      "properties": {
+        "id": 45,
+        "name": "Kolkata School 45",
+        "type": "SCHOOL",
+        "area": null,
+        "condition": "Poor",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.351015,
+          22.584395
+        ]
+      },
+      "properties": {
+        "id": 46,
+        "name": "Kolkata Garden 46",
+        "type": "GARDEN",
+        "area": null,
+        "condition": "Poor",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.351702,
+          22.600723
+        ]
+      },
+      "properties": {
+        "id": 47,
+        "name": "Kolkata Playground 47",
+        "type": "PLAYGROUND",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          88.336909,
+          22.571207
+        ]
+      },
+      "properties": {
+        "id": 48,
+        "name": "Kolkata Open Space 48",
+        "type": "OPEN_SPACE",
+        "area": null,
+        "condition": "Good",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.762107,
+          26.893549
+        ]
+      },
+      "properties": {
+        "id": 49,
+        "name": "Jaipur Park 49",
+        "type": "PARK",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.764493,
+          26.935817
+        ]
+      },
+      "properties": {
+        "id": 50,
+        "name": "Jaipur Lake 50",
+        "type": "LAKE",
+        "area": null,
+        "condition": "Good",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.762219,
+          26.921842
+        ]
+      },
+      "properties": {
+        "id": 51,
+        "name": "Jaipur School 51",
+        "type": "SCHOOL",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.797484,
+          26.901251
+        ]
+      },
+      "properties": {
+        "id": 52,
+        "name": "Jaipur Garden 52",
+        "type": "GARDEN",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.797601,
+          26.9004
+        ]
+      },
+      "properties": {
+        "id": 53,
+        "name": "Jaipur Playground 53",
+        "type": "PLAYGROUND",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          75.784797,
+          26.942307
+        ]
+      },
+      "properties": {
+        "id": 54,
+        "name": "Jaipur Open Space 54",
+        "type": "OPEN_SPACE",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.928989,
+          26.832612
+        ]
+      },
+      "properties": {
+        "id": 55,
+        "name": "Lucknow Park 55",
+        "type": "PARK",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.938372,
+          26.826165
+        ]
+      },
+      "properties": {
+        "id": 56,
+        "name": "Lucknow Lake 56",
+        "type": "LAKE",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.965226,
+          26.834663
+        ]
+      },
+      "properties": {
+        "id": 57,
+        "name": "Lucknow School 57",
+        "type": "SCHOOL",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.923126,
+          26.823122
+        ]
+      },
+      "properties": {
+        "id": 58,
+        "name": "Lucknow Garden 58",
+        "type": "GARDEN",
+        "area": null,
+        "condition": "Good",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.95249,
+          26.859757
+        ]
+      },
+      "properties": {
+        "id": 59,
+        "name": "Lucknow Playground 59",
+        "type": "PLAYGROUND",
+        "area": null,
+        "condition": "Good",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.945512,
+          26.87102
+        ]
+      },
+      "properties": {
+        "id": 60,
+        "name": "Lucknow Open Space 60",
+        "type": "OPEN_SPACE",
+        "area": null,
+        "condition": "Unknown",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.60993660217397,
+          24.08658925822804
+        ]
+      },
+      "properties": {
+        "id": 61,
+        "name": "Ramji ",
+        "type": "SCHOOL",
+        "area": 5000,
+        "condition": "Fair",
+        "organization": "Parks Dept",
+        "survey_score": 85.0
+      }
+    }
+  ]
+}
