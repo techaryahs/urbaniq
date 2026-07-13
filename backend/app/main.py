@@ -44,17 +44,14 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        # Local development (Vite dev server)
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        # Capacitor Android WebView (Capacitor v4+)
-        "http://localhost",
-        # Capacitor iOS WebView
-        "capacitor://localhost",
-        "ionic://localhost",
-        # Production web frontend (update this when you deploy the frontend)
-        "https://your-frontend.onrender.com",
-    ],
+    "http://localhost",
+    "https://localhost",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "capacitor://localhost",
+    "ionic://localhost",
+    "https://your-frontend.onrender.com",
+],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

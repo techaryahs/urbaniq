@@ -179,10 +179,24 @@ class UserRegister(BaseModel):
     password: str
     role: str
 
+    @field_validator("email", mode="before")
+    @classmethod
+    def lower_email(cls, v):
+        if isinstance(v, str):
+            return v.lower()
+        return v
+
 
 class UserLogin(BaseModel):
     email: EmailStr
     password: str
+
+    @field_validator("email", mode="before")
+    @classmethod
+    def lower_email(cls, v):
+        if isinstance(v, str):
+            return v.lower()
+        return v
 
 
 class UserResponse(BaseModel):
