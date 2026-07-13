@@ -185,17 +185,17 @@ const ParkInfo = ({ park, onClear, onCreateSurvey }: Props) => {
                       {sv.photos.map((p, pIdx) => (
                         <a 
                           key={pIdx} 
-                          href={`http://127.0.0.1:8000/uploads/surveys/${p}`} 
+                          href={`${import.meta.env.VITE_API_BASE_URL}/uploads/surveys/${p}`} 
                           target="_blank" 
                           rel="noreferrer"
                           className="w-7 h-7 rounded border border-gray-100 overflow-hidden shrink-0 hover:opacity-85"
                         >
                           <img 
-                            src={`http://127.0.0.1:8000/uploads/surveys/${p}`} 
+                            src={`${import.meta.env.VITE_API_BASE_URL}/uploads/surveys/${p}`} 
                             alt="Survey Pic" 
                             className="w-full h-full object-cover" 
                             onError={(e) => {
-                              e.currentTarget.src = `http://localhost:8000/uploads/surveys/${p}`;
+                              e.currentTarget.src = `${import.meta.env.VITE_API_BASE_URL}/uploads/surveys/${p}`;
                             }}
                           />
                         </a>

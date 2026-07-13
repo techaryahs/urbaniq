@@ -15,7 +15,7 @@ const BufferChart = ({ inside, outside }: Props) => {
 
   useEffect(() => {
     if (inside === undefined || outside === undefined) {
-      getAnalyticsBuffer().then(setDataStats);
+      getAnalyticsBuffer().then((data: any) => setDataStats(data));
     }
   }, [inside, outside]);
 

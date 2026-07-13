@@ -6,7 +6,6 @@ import "./index.css";
 import App from "./App";
 
 import "leaflet/dist/leaflet.css";
-import "leaflet-draw/dist/leaflet.draw.css";
 import "@geoman-io/leaflet-geoman-free/dist/leaflet-geoman.css";
 
 import { AuthProvider } from "./context/AuthContext";

@@ -1,4 +1,4 @@
-import type { Park } from "../pages/Dashboard/Dashboard";
+import type { Park } from "../services/parkService";
 
 export const getParkConditionStats = (parks: Park[]) => {
   let good = 0;

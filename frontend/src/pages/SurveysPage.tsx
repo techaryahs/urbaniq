@@ -111,7 +111,7 @@ const SurveysPage = () => {
 
   const handleOpenEdit = (survey: Survey) => {
     setSelectedSurvey(survey);
-    setFormParkId(survey.park_id.toString());
+    setFormParkId(survey.park_id?.toString() || "");
     setFormCondition(survey.condition);
     setFormScore(survey.score.toString());
     setFormRemarks(survey.remarks || "");
@@ -302,7 +302,8 @@ const SurveysPage = () => {
     }
   };
 
-  const getParkName = (id: number) => {
+  const getParkName = (id?: number) => {
+    if (id === undefined) return "Unknown Space";
     return parks.find((p) => p.id === id)?.name || `Space #${id}`;
   };
 
@@ -786,11 +787,11 @@ const SurveysPage = () => {
                     {existingPhotos.map((photo, idx) => (
                       <div key={idx} className="relative aspect-square border rounded-xl overflow-hidden group">
                         <img 
-                          src={`http://127.0.0.1:8000/uploads/surveys/${photo}`} 
+                          src={`${import.meta.env.VITE_API_BASE_URL}/uploads/surveys/${photo}`} 
                           alt="Inspection" 
                           className="w-full h-full object-cover" 
                           onError={(e) => {
-                            e.currentTarget.src = `http://localhost:8000/uploads/surveys/${photo}`;
+                            e.currentTarget.src = `${import.meta.env.VITE_API_BASE_URL}/uploads/surveys/${photo}`;
                           }}
                         />
                         <button
@@ -913,17 +914,17 @@ const SurveysPage = () => {
                     {selectedSurvey.photos.map((photo, idx) => (
                       <a 
                         key={idx} 
-                        href={`http://127.0.0.1:8000/uploads/surveys/${photo}`} 
+                        href={`${import.meta.env.VITE_API_BASE_URL}/uploads/surveys/${photo}`} 
                         target="_blank" 
                         rel="noreferrer"
                         className="relative aspect-square border rounded-xl overflow-hidden block hover:opacity-90 hover:scale-102 transition-all cursor-zoom-in"
                       >
                         <img 
-                          src={`http://127.0.0.1:8000/uploads/surveys/${photo}`} 
+                          src={`${import.meta.env.VITE_API_BASE_URL}/uploads/surveys/${photo}`} 
                           alt="Survey Document" 
                           className="w-full h-full object-cover" 
                           onError={(e) => {
-                            e.currentTarget.src = `http://localhost:8000/uploads/surveys/${photo}`;
+                            e.currentTarget.src = `${import.meta.env.VITE_API_BASE_URL}/uploads/surveys/${photo}`;
                           }}
                         />
                       </a>

@@ -4,7 +4,7 @@ import { Map, ExternalLink } from "lucide-react";
 import MapView from "../Map/MapView";
 import { getParks } from "../../services/parkService";
 import type { BufferGeoJSON } from "../../services/parkService";
-import type { Park } from "../../pages/Dashboard/Dashboard";
+import type { Park } from "../../services/parkService";
 
 const MiniMap = () => {
   const [parks, setParks] = useState<Park[]>([]);

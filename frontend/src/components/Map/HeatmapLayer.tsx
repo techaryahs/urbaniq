@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet.heat";
-import type { Park } from "../../pages/Dashboard/Dashboard";
+import type { Park } from "../../services/parkService";
 
 interface Props {
   parks: Park[];

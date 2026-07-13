@@ -1,4 +1,4 @@
-import type { Park } from "../pages/Dashboard/Dashboard";
+import type { Park } from "../services/parkService";
 import L from "leaflet";
 
 export const getAverageCoordinates = (parks: Park[]) => {

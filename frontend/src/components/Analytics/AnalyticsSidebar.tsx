@@ -36,7 +36,7 @@ const AnalyticsSidebar = ({ stats, spatialStats, bufferStats }: Props) => {
         
         <div className="mb-6">
           <h4 className="text-sm font-semibold text-gray-500 mb-2 uppercase">Conditions</h4>
-          <ConditionPieChart good={stats.good} fair={stats.fair} poor={stats.poor} />
+          <ConditionPieChart stats={{ good: stats.good, fair: stats.fair, poor: stats.poor }} />
         </div>
 
         {bufferStats && (

@@ -63,7 +63,7 @@ const MapClickHandler = ({ onMapClick }: ClickHandlerProps) => {
   return null;
 };
 
-const MapBoundsFitter = ({ parks, readOnly }: { parks: Park[]; readOnly: boolean }) => {
+const MapBoundsFitter = ({ parks }: { parks: Park[] }) => {
   const map = useMapEvents({});
   useEffect(() => {
     if (parks.length > 0) {
@@ -198,7 +198,7 @@ const MapView = ({
             url={BASEMAPS[selectedBasemap].url}
           />
 
-          <MapBoundsFitter parks={parks} readOnly={readOnly} />
+          <MapBoundsFitter parks={parks} />
 
           {!readOnly && (
             <>
