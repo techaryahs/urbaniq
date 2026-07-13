@@ -36,13 +36,25 @@ app = FastAPI(
 )
 
 # CORS
+# Capacitor Android WebView sends Origin: http://localhost (port-less).
+# Capacitor iOS sends Origin: capacitor://localhost.
+# The local dev server sends Origin: http://localhost:5173.
+# All three must be explicitly listed — missing any one silently blocks
+# every request from that environment before any data is exchanged.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "https://your-frontend.onrender.com",
-],
+        # Local development (Vite dev server)
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        # Capacitor Android WebView (Capacitor v4+)
+        "http://localhost",
+        # Capacitor iOS WebView
+        "capacitor://localhost",
+        "ionic://localhost",
+        # Production web frontend (update this when you deploy the frontend)
+        "https://your-frontend.onrender.com",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
