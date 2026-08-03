@@ -44,19 +44,24 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-    "http://localhost",
-    "https://localhost",
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "capacitor://localhost",
-    "ionic://localhost",
-    "https://your-frontend.onrender.com",
-],
+        # Local
+        "http://localhost",
+        "https://localhost",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+
+        # Capacitor
+        "capacitor://localhost",
+        "ionic://localhost",
+
+        # Vercel Frontend
+        "https://urbaniq-three.vercel.app",
+        "https://urbaniq-qv90mgsf7-techaryahs-projects.vercel.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 # Mount static files for upload verification
 os.makedirs("uploads/surveys", exist_ok=True)
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
