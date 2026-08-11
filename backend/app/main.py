@@ -55,6 +55,7 @@ app.add_middleware(
         "ionic://localhost",
 
         # Vercel Frontend
+        "https://urbaniq-ahana.vercel.app",
         "https://urbaniq-three.vercel.app",
         "https://urbaniq-qv90mgsf7-techaryahs-projects.vercel.app",
     ],
